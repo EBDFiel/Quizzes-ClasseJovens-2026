@@ -2,210 +2,247 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>EBD 2026 - Quizzes das Lições - Jovens</title>
     <!-- Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            background: linear-gradient(135deg, #5D3FD3 0%, #FF7A5A 100%);
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
             min-height: 100vh;
+            color: #eaf6ff;
+            overflow-x: hidden;
+            position: relative;
+            line-height: 1.6;
             padding: 20px;
-            color: #333;
         }
-        
+
+        /* Partículas de fundo */
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
-        
+
+        /* Header */
         header {
             text-align: center;
             padding: 40px 20px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
             margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
-        
+
         .logo-img {
             max-width: 150px;
             height: auto;
             display: block;
             margin: 0 auto 20px auto;
-            border-radius: 0;
-            box-shadow: none;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
         }
-        
+
         h1 {
-            color: #2c3e50;
+            color: white;
             font-size: 2.5rem;
             margin-bottom: 10px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-        
+
         .subtitle {
-            color: #7f8c8d;
+            color: rgba(255,255,255,0.7);
             font-size: 1.2rem;
             margin-bottom: 20px;
         }
-        
+
         .ano-info {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
             padding: 15px;
-            border-radius: 10px;
+            border-radius: 50px;
             margin-top: 20px;
             display: inline-block;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
         }
-        
+
         /* MENSAGEM DE SAUDAÇÃO */
         .saudacao {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
             padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            color: rgba(255,255,255,0.9);
         }
-        
+
         .saudacao h2 {
-            color: #5D3FD3;
+            color: #ffb347;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
-        
+
         .saudacao p {
             margin-bottom: 15px;
             font-size: 1.1rem;
-            color: #444;
+            color: rgba(255,255,255,0.8);
         }
-        
+
         .saudacao ul {
             margin-left: 20px;
             margin-bottom: 20px;
         }
-        
+
         .saudacao li {
             margin-bottom: 8px;
-            color: #555;
+            color: rgba(255,255,255,0.7);
         }
-        
+
         .saudacao .destaque {
-            background: linear-gradient(135deg, rgba(93, 63, 211, 0.1), rgba(255, 122, 90, 0.1));
+            background: rgba(255,180,70,0.1);
             padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid #5D3FD3;
+            border-radius: 20px;
+            border-left: 4px solid #ffb347;
             margin-top: 20px;
         }
-        
+
         /* NAVEGAÇÃO ENTRE TRIMESTRES */
         .nav-trimestres {
-            background: white;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.1);
             padding: 25px;
-            border-radius: 15px;
+            border-radius: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             text-align: center;
         }
-        
+
         .nav-trimestres h3 {
-            color: #5D3FD3;
+            color: #ffb347;
             margin-bottom: 20px;
             font-size: 1.3rem;
         }
-        
+
         .trimestre-links {
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
             justify-content: center;
         }
-        
+
         .trimestre-btn {
             padding: 12px 25px;
-            border-radius: 8px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s ease;
             min-width: 180px;
             text-align: center;
-        }
-        
-        .trimestre-btn.active {
-            background: linear-gradient(135deg, #5D3FD3, #FF7A5A);
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
             color: white;
         }
-        
-        .trimestre-btn.inactive {
-            background: #e0e0e0;
-            color: #666;
-            cursor: not-allowed;
+
+        .trimestre-btn.active {
+            background: linear-gradient(135deg, #ffb347, #ff8c00);
+            color: #1e2f4a;
+            border-color: transparent;
         }
-        
+
+        .trimestre-btn.inactive {
+            background: rgba(255,255,255,0.05);
+            color: rgba(255,255,255,0.3);
+            cursor: not-allowed;
+            border-color: rgba(255,255,255,0.05);
+        }
+
         .trimestre-btn:hover:not(.inactive) {
             transform: translateY(-3px);
-            box-shadow: 0 7px 15px rgba(93, 63, 211, 0.3);
+            background: rgba(255,180,70,0.2);
+            border-color: #ffb347;
         }
-        
+
         /* SEÇÃO DO TRIMESTRE */
         .trimestre {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
             padding: 30px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             display: none;
         }
-        
+
         .trimestre.active {
             display: block;
             animation: fadeIn 0.5s ease;
         }
-        
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
+
         .trimestre h2 {
-            color: #2c3e50;
+            color: white;
             padding-bottom: 15px;
             margin-bottom: 25px;
-            border-bottom: 3px solid #5D3FD3;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
         }
-        
+
         .trimestre h2 .badge {
-            background: linear-gradient(135deg, #5D3FD3 0%, #FF7A5A 100%);
-            color: white;
+            background: linear-gradient(135deg, #ffb347 0%, #ff8c00 100%);
+            color: #1e2f4a;
             padding: 5px 15px;
-            border-radius: 20px;
+            border-radius: 50px;
             font-size: 0.9rem;
         }
-        
+
         .licoes-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 20px;
         }
-        
+
         .licao-card {
-            background: white;
-            border-radius: 10px;
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
             padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            border: 2px solid transparent;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
@@ -213,19 +250,19 @@
             display: flex;
             flex-direction: column;
         }
-        
+
         .licao-card:hover {
             transform: translateY(-5px);
-            border-color: #5D3FD3;
-            box-shadow: 0 15px 30px rgba(93, 63, 211, 0.2);
+            border-color: #ffb347;
+            box-shadow: 0 15px 30px rgba(255,180,70,0.2);
         }
-        
+
         .licao-card .numero {
             position: absolute;
             top: 15px;
             right: 15px;
-            background: #f1f8ff;
-            color: #5D3FD3;
+            background: rgba(255,180,70,0.2);
+            color: #ffb347;
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -234,32 +271,33 @@
             justify-content: center;
             font-weight: bold;
             font-size: 1.2rem;
+            border: 1px solid rgba(255,180,70,0.3);
         }
-        
+
         .licao-card h3 {
-            color: #2c3e50;
+            color: white;
             margin-bottom: 10px;
             font-size: 1.1rem;
             padding-right: 50px;
             flex-grow: 1;
         }
-        
+
         .licao-card .data {
-            color: #7f8c8d;
+            color: rgba(255,255,255,0.6);
             font-size: 0.9rem;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
-        
+
         .btn-quiz {
             display: inline-block;
-            background: linear-gradient(135deg, #5D3FD3, #FF7A5A);
+            background: linear-gradient(135deg, #00b4d8, #0077b6);
             color: white;
             text-decoration: none;
             padding: 12px 25px;
-            border-radius: 8px;
+            border-radius: 50px;
             font-weight: bold;
             text-align: center;
             transition: all 0.3s ease;
@@ -268,60 +306,66 @@
             width: 100%;
             font-size: 1rem;
             margin-top: auto;
+            box-shadow: 0 5px 15px rgba(0,180,216,0.3);
         }
-        
+
         .btn-quiz:hover {
-            background: linear-gradient(135deg, #4A2FAB, #E56A50);
+            background: linear-gradient(135deg, #0096c7, #005f8e);
             transform: translateY(-2px);
-            box-shadow: 0 7px 15px rgba(93, 63, 211, 0.3);
+            box-shadow: 0 10px 20px rgba(0,180,216,0.4);
         }
-        
+
         .btn-quiz.disabled {
-            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.3);
             cursor: not-allowed;
-            opacity: 0.7;
+            box-shadow: none;
         }
-        
+
         .btn-quiz.disabled:hover {
             transform: none;
             box-shadow: none;
         }
-        
+
         .status {
             display: inline-block;
             padding: 4px 12px;
-            border-radius: 15px;
+            border-radius: 50px;
             font-size: 0.8rem;
             font-weight: bold;
             margin-left: 10px;
         }
-        
+
         .status.ativa {
-            background: #d4edda;
-            color: #155724;
+            background: rgba(40,167,69,0.2);
+            color: #4ade80;
+            border: 1px solid rgba(74,222,128,0.3);
         }
-        
+
         .status.breve {
-            background: #fff3cd;
-            color: #856404;
+            background: rgba(255,179,71,0.2);
+            color: #ffb347;
+            border: 1px solid rgba(255,179,71,0.3);
         }
-        
+
         /* SEÇÃO DE REDES SOCIAIS */
         .redes-sociais {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 30px;
             padding: 30px;
             margin: 30px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
             text-align: center;
         }
-        
+
         .redes-sociais h3 {
-            color: #5D3FD3;
+            color: #ffb347;
             margin-bottom: 20px;
             font-size: 1.5rem;
         }
-        
+
         .social-icons {
             display: flex;
             justify-content: center;
@@ -329,7 +373,7 @@
             flex-wrap: wrap;
             margin-top: 20px;
         }
-        
+
         .social-icon {
             display: flex;
             flex-direction: column;
@@ -338,11 +382,11 @@
             transition: all 0.3s ease;
             width: 120px;
         }
-        
+
         .social-icon:hover {
             transform: translateY(-5px);
         }
-        
+
         .icon-circle {
             width: 70px;
             height: 70px;
@@ -353,71 +397,83 @@
             margin-bottom: 10px;
             font-size: 30px;
             color: white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
-        
+
         .instagram .icon-circle {
             background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
         }
-        
+
         .facebook .icon-circle {
             background: #1877F2;
         }
-        
+
         .youtube .icon-circle {
             background: #FF0000;
         }
-        
+
         .tiktok .icon-circle {
             background: #000000;
         }
-        
+
         .social-icon span {
-            color: #2c3e50;
+            color: rgba(255,255,255,0.8);
             font-weight: 600;
             font-size: 0.9rem;
         }
-        
+
         .social-icon:hover span {
-            color: #5D3FD3;
+            color: #ffb347;
         }
-        
+
         footer {
             text-align: center;
             padding: 30px;
-            color: white;
+            color: rgba(255,255,255,0.5);
             margin-top: 40px;
         }
-        
+
         /* SEÇÕES DOS OUTROS TRIMESTRES */
         .trimestre-placeholder {
             text-align: center;
             padding: 60px 30px;
         }
-        
+
         .trimestre-placeholder h3 {
-            color: #5D3FD3;
+            color: #ffb347;
             margin-bottom: 20px;
             font-size: 1.5rem;
         }
-        
+
         .trimestre-placeholder p {
-            color: #666;
+            color: rgba(255,255,255,0.7);
             margin-bottom: 30px;
             font-size: 1.1rem;
         }
-        
+
         .btn-pasta {
             display: inline-block;
-            background: #5D3FD3;
+            background: linear-gradient(135deg, #00b4d8, #0077b6);
             color: white;
             padding: 12px 30px;
-            border-radius: 8px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             margin: 10px;
+            border: none;
+            transition: all 0.3s;
         }
-        
+
+        .btn-pasta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,180,216,0.3);
+        }
+
+        .btn-paga {
+            background: linear-gradient(135deg, #ffb347, #ff8c00) !important;
+            color: #1e2f4a !important;
+        }
+
         @media (max-width: 768px) {
             .licoes-grid {
                 grid-template-columns: 1fr;
@@ -510,9 +566,21 @@
                 font-size: 20px;
             }
         }
+
+        /* Animações */
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
+    <canvas id="particles"></canvas>
+
     <div class="container">
         <header>
             <!-- LOGO DA EBD -->
@@ -615,7 +683,7 @@
                 <span>1º Trimestre 2026 - Jovens</span>
                 <span class="badge">Jan-Mar</span>
             </h2>
-            <p style="margin-bottom: 25px; color: #555; font-size: 1.1rem;">
+            <p style="margin-bottom: 25px; color: rgba(255,255,255,0.8); font-size: 1.1rem;">
                 <strong>Tema:</strong> As Bem-Aventuranças do Reino de Deus
             </p>
             
@@ -788,7 +856,6 @@
                         ▶️ Iniciar Quiz
                     </a>
                 </div>
-                </div>
             </div>
         </div>
         
@@ -805,7 +872,7 @@
                 <p><strong>Período:</strong> 05/04 a 28/06 de 2026</p>
                 <div style="margin-top: 30px;">
                     <a href="#" class="btn-pasta" onclick="criarPasta('trimestre-02')">📁 Criar Estrutura do 2º Trimestre</a>
-                    <a href="#" class="btn-paga" style="background: #FF7A5A;" onclick="window.open('https://github.com', '_blank')">⚙️ Configurar no GitHub</a>
+                    <a href="#" class="btn-pasta btn-paga" style="background: #FF7A5A;" onclick="window.open('https://github.com', '_blank')">⚙️ Configurar no GitHub</a>
                 </div>
             </div>
         </div>
@@ -853,6 +920,42 @@
     </div>
     
     <script>
+        // Partículas de fundo
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        const particles = Array.from({ length: 100 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: Math.random() * 2,
+            d: Math.random() * 1 + 0.5,
+            o: Math.random() * 0.3 + 0.1
+        }));
+        
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 180, 70, ${p.o})`;
+                ctx.fill();
+                p.y += p.d;
+                if (p.y > canvas.height) {
+                    p.y = 0;
+                    p.x = Math.random() * canvas.width;
+                }
+            });
+            requestAnimationFrame(drawParticles);
+        }
+        drawParticles();
+
         // Navegação entre trimestres
         document.addEventListener('DOMContentLoaded', function() {
             const trimestreButtons = document.querySelectorAll('.trimestre-btn');

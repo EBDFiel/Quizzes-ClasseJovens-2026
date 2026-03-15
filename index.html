@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-     <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quizzes da EBD Fiel - Classe Jovens</title>
     <!-- Font Awesome para ícones -->
@@ -43,10 +43,10 @@
             z-index: 2;
         }
 
-        /* Header */
+        /* Header - NOVO MODELO (mais limpo, com redes sociais) */
         header {
             text-align: center;
-            padding: 40px 20px;
+            padding: 40px 20px 30px;
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
@@ -67,25 +67,75 @@
         h1 {
             color: white;
             font-size: 2.5rem;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .subtitle {
             color: rgba(255,255,255,0.7);
             font-size: 1.2rem;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
-        .ano-info {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(5px);
-            padding: 15px;
-            border-radius: 50px;
-            margin-top: 20px;
+        .subtitle strong {
+            color: #ffb347;
+            font-weight: 600;
+            background: rgba(255,179,71,0.15);
+            padding: 6px 16px;
+            border-radius: 40px;
             display: inline-block;
-            border: 1px solid rgba(255,255,255,0.1);
-            color: white;
+            margin-left: 8px;
+            border: 1px solid rgba(255,179,71,0.3);
+        }
+
+        .header-description {
+            color: rgba(255,255,255,0.6);
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+
+        /* Redes sociais no cabeçalho */
+        .header-social {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .header-social h3 {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 15px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .social-icons-header {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-icon-header {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            font-size: 1.4rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(8px);
+        }
+
+        .social-icon-header:hover {
+            transform: translateY(-6px) scale(1.1);
+            background: linear-gradient(145deg, #00b4d8, #0077b6);
+            box-shadow: 0 16px 30px rgba(0,180,216,0.5);
+            border-color: transparent;
         }
 
         /* MENSAGEM DE SAUDAÇÃO */
@@ -348,84 +398,7 @@
             border: 1px solid rgba(255,179,71,0.3);
         }
 
-        /* SEÇÃO DE REDES SOCIAIS */
-        .redes-sociais {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 30px;
-            padding: 30px;
-            margin: 30px 0;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-
-        .redes-sociais h3 {
-            color: #ffb347;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .social-icon {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            width: 120px;
-        }
-
-        .social-icon:hover {
-            transform: translateY(-5px);
-        }
-
-        .icon-circle {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 10px;
-            font-size: 30px;
-            color: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-
-        .instagram .icon-circle {
-            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
-        }
-
-        .facebook .icon-circle {
-            background: #1877F2;
-        }
-
-        .youtube .icon-circle {
-            background: #FF0000;
-        }
-
-        .tiktok .icon-circle {
-            background: #000000;
-        }
-
-        .social-icon span {
-            color: rgba(255,255,255,0.8);
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .social-icon:hover span {
-            color: #ffb347;
-        }
-
+        /* SEÇÃO DE REDES SOCIAIS (agora só no header, removi a duplicada) */
         footer {
             text-align: center;
             padding: 30px;
@@ -512,18 +485,14 @@
                 padding: 20px;
             }
             
-            .social-icons {
+            .social-icons-header {
                 gap: 15px;
             }
             
-            .social-icon {
-                width: 90px;
-            }
-            
-            .icon-circle {
-                width: 60px;
-                height: 60px;
-                font-size: 25px;
+            .social-icon-header {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
             }
         }
         
@@ -533,7 +502,20 @@
             }
             
             header {
-                padding: 20px 15px;
+                padding: 25px 15px 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .subtitle strong {
+                padding: 4px 12px;
+                font-size: 0.9rem;
             }
             
             .trimestre {
@@ -546,24 +528,6 @@
             
             .saudacao {
                 padding: 15px;
-            }
-            
-            .redes-sociais {
-                padding: 20px 15px;
-            }
-            
-            .social-icons {
-                gap: 10px;
-            }
-            
-            .social-icon {
-                width: 80px;
-            }
-            
-            .icon-circle {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
             }
         }
 
@@ -582,15 +546,23 @@
     <canvas id="particles"></canvas>
 
     <div class="container">
+        <!-- HEADER NOVO MODELO (mais limpo, com redes sociais) -->
         <header>
-            <!-- LOGO DA EBD -->
             <img src="https://i.imgur.com/vsNu5IC.png" alt="Logo EBD" class="logo-img">
             
-            <h1>Escola Bíblica Dominical - Jovens</h1>
-            <p class="subtitle">Quizzes Interativos - Ano 2026</p>
+            <h1>Quizes da EBD Fiel</h1>
+            <p class="subtitle">Quizes Interativos <strong>Classe Jovens</strong></p>
+            <p class="header-description">Teste seu conhecimento com os quizes das lições da EBD</p>
             
-            <div class="ano-info">
-                <p>📚 <strong>Ano Completo:</strong> 4 Trimestres • 52 Lições • 52 Quizzes</p>
+            <!-- Redes sociais no cabeçalho (mesmo estilo da página de adultos) -->
+            <div class="header-social">
+                <h3>Siga a EBD Fiel nas redes sociais:</h3>
+                <div class="social-icons-header">
+                    <a href="https://www.instagram.com/ebdfiel/" class="social-icon-header" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/EBDFiel/" class="social-icon-header" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@EBDFiel" class="social-icon-header" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@ebdfiel" class="social-icon-header" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
             </div>
         </header>
         
@@ -620,42 +592,6 @@
             <p>Os quizzes serão disponibilizados semanalmente, seguindo o calendário das lições. As lições futuras serão marcadas como "Em preparação" até estarem prontas para uso.</p>
             
             <p>Que Deus abençoe seu estudo da Palavra e que estes recursos contribuam para seu crescimento espiritual!</p>
-        </div>
-        
-        <!-- REDES SOCIAIS -->
-        <div class="redes-sociais">
-            <h3>📱 Siga-nos nas Redes Sociais</h3>
-            <p>Fique por dentro de todas as novidades, conteúdos exclusivos e participe da nossa comunidade online!</p>
-            
-            <div class="social-icons">
-                <a href="https://www.instagram.com/ebdfiel/" target="_blank" class="social-icon instagram">
-                    <div class="icon-circle">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                    <span>Instagram</span>
-                </a>
-                
-                <a href="https://www.facebook.com/EBDFiel/" target="_blank" class="social-icon facebook">
-                    <div class="icon-circle">
-                        <i class="fab fa-facebook-f"></i>
-                    </div>
-                    <span>Facebook</span>
-                </a>
-                
-                <a href="https://www.youtube.com/@EBDFiel" target="_blank" class="social-icon youtube">
-                    <div class="icon-circle">
-                        <i class="fab fa-youtube"></i>
-                    </div>
-                    <span>YouTube</span>
-                </a>
-                
-                <a href="https://www.tiktok.com/@ebdfiel" target="_blank" class="social-icon tiktok">
-                    <div class="icon-circle">
-                        <i class="fab fa-tiktok"></i>
-                    </div>
-                    <span>TikTok</span>
-                </a>
-            </div>
         </div>
         
         <!-- NAVEGAÇÃO ENTRE TRIMESTRES -->

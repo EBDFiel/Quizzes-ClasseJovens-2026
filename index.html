@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quizzes da EBD Fiel - Classe Jovens</title>
-    <!-- Font Awesome para ícones -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,16 +17,15 @@
 
         body {
             font-family: 'Inter', sans-serif;
+            line-height: 1.6;
             background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
             min-height: 100vh;
+            padding: 20px;
             color: #eaf6ff;
             overflow-x: hidden;
             position: relative;
-            line-height: 1.6;
-            padding: 20px;
         }
 
-        /* Partículas de fundo */
         #particles {
             position: fixed;
             top: 0;
@@ -37,90 +37,98 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             position: relative;
-            z-index: 2;
+            z-index: 1;
         }
 
-        /* Header - NOVO MODELO (mais limpo, com redes sociais) */
+        /* ===== HEADER ===== */
         header {
             text-align: center;
-            padding: 40px 20px 30px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            margin-bottom: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            padding: 3rem 2rem;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 32px;
+            margin-bottom: 24px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.15);
+            animation: fadeSlideDown 1s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeSlideDown {
+            from { opacity: 0; transform: translateY(-40px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         .logo-img {
-            max-width: 150px;
+            max-width: 140px;
             height: auto;
             display: block;
             margin: 0 auto 20px auto;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+            filter: drop-shadow(0 8px 24px rgba(0,180,216,0.3));
+            animation: logoPulse 3s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { filter: drop-shadow(0 8px 24px rgba(0,180,216,0.3)); }
+            50%       { filter: drop-shadow(0 8px 32px rgba(0,180,216,0.6)); }
         }
 
         h1 {
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 5px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            color: #ffffff;
+            font-size: 2.6rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 20px rgba(0,180,216,0.4);
         }
 
         .subtitle {
-            color: rgba(255,255,255,0.7);
-            font-size: 1.2rem;
-            margin-bottom: 10px;
+            color: rgba(255,255,255,0.75);
+            font-size: 1.25rem;
+            margin-bottom: 24px;
         }
 
         .subtitle strong {
-            color: #ffb347;
+            color: #00b4d8;
             font-weight: 600;
-            background: rgba(255,179,71,0.15);
+            background: rgba(0,180,216,0.15);
             padding: 6px 16px;
             border-radius: 40px;
             display: inline-block;
             margin-left: 8px;
-            border: 1px solid rgba(255,179,71,0.3);
+            border: 1px solid rgba(0,180,216,0.3);
         }
 
-        .header-description {
-            color: rgba(255,255,255,0.6);
-            font-size: 1rem;
-            margin-bottom: 25px;
-        }
-
-        /* Redes sociais no cabeçalho */
-        .header-social {
-            margin-top: 20px;
-            padding-top: 20px;
+        .redes-sociais {
+            margin-top: 32px;
+            padding-top: 24px;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        .header-social h3 {
+        .redes-sociais h3 {
             color: rgba(255,255,255,0.7);
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             font-size: 1rem;
             font-weight: 500;
         }
 
-        .social-icons-header {
+        .social-icons {
             display: flex;
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
         }
 
-        .social-icon-header {
+        .social-icon {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 48px;
-            height: 48px;
+            width: 48px; height: 48px;
             border-radius: 50%;
             background: rgba(255,255,255,0.1);
             color: #fff;
@@ -131,414 +139,453 @@
             backdrop-filter: blur(8px);
         }
 
-        .social-icon-header:hover {
+        .social-icon:hover {
             transform: translateY(-6px) scale(1.1);
             background: linear-gradient(145deg, #00b4d8, #0077b6);
             box-shadow: 0 16px 30px rgba(0,180,216,0.5);
             border-color: transparent;
         }
 
-        /* MENSAGEM DE SAUDAÇÃO */
+        /* ===== SAUDAÇÃO ===== */
         .saudacao {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 30px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            color: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.07);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 28px;
+            padding: 30px 35px;
+            margin-bottom: 32px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.12);
+            animation: fadeSlideUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         .saudacao h2 {
-            color: #ffb347;
-            margin-bottom: 15px;
+            color: #00b4d8;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
+            font-weight: 600;
+            font-size: 1.8rem;
         }
 
-        .saudacao p {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.8);
-        }
+        .saudacao p { margin-bottom: 14px; color: rgba(255,255,255,0.8); }
 
         .saudacao ul {
             margin-left: 20px;
             margin-bottom: 20px;
-        }
-
-        .saudacao li {
-            margin-bottom: 8px;
             color: rgba(255,255,255,0.7);
         }
 
+        .saudacao ul li { margin-bottom: 6px; }
+
         .saudacao .destaque {
-            background: rgba(255,180,70,0.1);
-            padding: 15px;
+            background: rgba(0,180,216,0.08);
+            padding: 20px;
             border-radius: 20px;
-            border-left: 4px solid #ffb347;
+            border-left: 6px solid #00b4d8;
             margin-top: 20px;
         }
 
-        /* NAVEGAÇÃO ENTRE TRIMESTRES */
-        .nav-trimestres {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 25px;
-            border-radius: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            text-align: center;
-        }
-
-        .nav-trimestres h3 {
-            color: #ffb347;
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-        }
-
-        .trimestre-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-        }
-
-        .trimestre-btn {
-            padding: 12px 25px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            min-width: 180px;
-            text-align: center;
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: white;
-        }
-
-        .trimestre-btn.active {
-            background: linear-gradient(135deg, #ffb347, #ff8c00);
-            color: #1e2f4a;
-            border-color: transparent;
-        }
-
-        .trimestre-btn.inactive {
-            background: rgba(255,255,255,0.05);
-            color: rgba(255,255,255,0.3);
-            cursor: not-allowed;
-            border-color: rgba(255,255,255,0.05);
-        }
-
-        .trimestre-btn:hover:not(.inactive) {
-            transform: translateY(-3px);
-            background: rgba(255,180,70,0.2);
-            border-color: #ffb347;
-        }
-
-        /* SEÇÃO DO TRIMESTRE */
+        /* ===== ACCORDION ===== */
         .trimestre {
+            background: rgba(255,255,255,0.07);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 28px;
+            margin-bottom: 20px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.12);
+            overflow: hidden;
+            transition: box-shadow 0.4s ease, transform 0.3s ease;
+        }
+
+        .trimestre:hover {
+            box-shadow: 0 30px 60px rgba(0,180,216,0.2), inset 0 1px 0 rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+
+        .trimestre-header {
             background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 30px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-            display: none;
-        }
-
-        .trimestre.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .trimestre h2 {
-            color: white;
-            padding-bottom: 15px;
-            margin-bottom: 25px;
-            border-bottom: 2px solid rgba(255,255,255,0.1);
+            padding: 22px 30px;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            transition: background 0.3s ease;
+        }
+
+        .trimestre-header:hover { background: rgba(255,255,255,0.1); }
+
+        .trimestre-header h2 {
+            color: #fff;
+            font-size: 1.6rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 16px;
             flex-wrap: wrap;
+            margin: 0;
         }
 
-        .trimestre h2 .badge {
-            background: linear-gradient(135deg, #ffb347 0%, #ff8c00 100%);
-            color: #1e2f4a;
-            padding: 5px 15px;
-            border-radius: 50px;
+        .trimestre-header .badge {
+            background: linear-gradient(145deg, #00b4d8, #0077b6);
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 40px;
             font-size: 0.9rem;
+            font-weight: 500;
+            box-shadow: 0 6px 16px rgba(0,180,216,0.4);
         }
 
+        .toggle-icon {
+            font-size: 1.2rem;
+            color: #00b4d8;
+            transition: transform 0.4s ease, background 0.3s ease;
+            background: rgba(0,180,216,0.1);
+            width: 44px; height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid rgba(0,180,216,0.2);
+            flex-shrink: 0;
+        }
+
+        .trimestre-header.open .toggle-icon {
+            transform: rotate(180deg);
+            background: linear-gradient(145deg, #00b4d8, #0077b6);
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(0,180,216,0.4);
+        }
+
+        .trimestre-conteudo {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease;
+            padding: 0 30px;
+            background: rgba(0,0,0,0.1);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .trimestre-conteudo.open {
+            padding: 0 30px 30px 30px;
+        }
+
+        .tema-trimestre {
+            color: rgba(255,255,255,0.85);
+            font-size: 1.05rem;
+            margin: 24px 0 20px;
+            padding: 14px 20px;
+            background: rgba(0,180,216,0.08);
+            border-radius: 40px;
+            border-left: 6px solid #00b4d8;
+            font-weight: 500;
+        }
+
+        /* ===== CAPA ===== */
+        .capa-revista { text-align: center; margin: 20px 0 30px; }
+        .capa-revista img {
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 24px 50px rgba(0,0,0,0.5);
+            border: 2px solid rgba(255,255,255,0.15);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .capa-revista img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 32px 60px rgba(0,180,216,0.3);
+        }
+
+        /* ===== DESCRIÇÃO ===== */
+        .descricao-detalhada {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 28px;
+            margin: 20px 0 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.85);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        /* ===== VÍDEO ===== */
+        .video-trimestre {
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(10px);
+            border-radius: 28px;
+            padding: 28px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+        }
+
+        .video-trimestre h3 {
+            color: #00b4d8;
+            font-size: 1.3rem;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .video-universal-container {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            background: #000;
+            border: 1px solid rgba(0,180,216,0.3);
+        }
+
+        .video-responsive-wrapper {
+            position: relative;
+            padding-bottom: 177.78%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-responsive-wrapper iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 1rem;
+            margin: 20px auto 0;
+        }
+
+        .video-direct-link {
+            display: inline-block;
+            background: linear-gradient(145deg, #00b4d8, #0077b6);
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,180,216,0.4);
+        }
+
+        .video-direct-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 30px rgba(0,180,216,0.6);
+        }
+
+        /* ===== CARDS DAS LIÇÕES ===== */
         .licoes-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 24px;
         }
 
         .licao-card {
-            background: rgba(0,0,0,0.2);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
+            background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04));
+            border-radius: 24px;
+            padding: 24px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.12);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
-            overflow: hidden;
-            height: 100%;
             display: flex;
             flex-direction: column;
+            overflow: hidden;
+        }
+
+        .licao-card::before {
+            content: "";
+            position: absolute;
+            width: 180%;
+            height: 180%;
+            background: radial-gradient(circle, rgba(0,180,216,0.12) 0%, transparent 65%);
+            top: -40%;
+            left: -40%;
+            transition: 0.6s ease;
+            pointer-events: none;
         }
 
         .licao-card:hover {
-            transform: translateY(-5px);
-            border-color: #ffb347;
-            box-shadow: 0 15px 30px rgba(255,180,70,0.2);
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 24px 50px rgba(0,180,216,0.35);
+            border-color: rgba(0,180,216,0.4);
+        }
+
+        .licao-card:hover::before {
+            top: -20%;
+            left: -20%;
         }
 
         .licao-card .numero {
             position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(255,180,70,0.2);
-            color: #ffb347;
-            width: 40px;
-            height: 40px;
+            top: 16px; right: 16px;
+            background: linear-gradient(145deg, rgba(0,180,216,0.25), rgba(0,119,182,0.2));
+            color: #00b4d8;
+            width: 44px; height: 44px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            border: 1px solid rgba(255,180,70,0.3);
+            font-weight: 700;
+            font-size: 1.1rem;
+            border: 1px solid rgba(0,180,216,0.3);
         }
 
         .licao-card h3 {
-            color: white;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
+            color: #fff;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            font-weight: 600;
             padding-right: 50px;
             flex-grow: 1;
+            line-height: 1.5;
         }
 
         .licao-card .data {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.88rem;
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
             gap: 8px;
+            font-weight: 500;
+            flex-wrap: wrap;
+        }
+
+        .release-date {
+            color: #00b4d8;
+            font-size: 0.8rem;
+            background: rgba(0,180,216,0.1);
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-left: 8px;
+        }
+
+        .progress-bar {
+            height: 5px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, #00b4d8, #0077b6);
+            border-radius: 10px;
+            transition: width 0.8s ease;
         }
 
         .btn-quiz {
-            display: inline-block;
-            background: linear-gradient(135deg, #00b4d8, #0077b6);
-            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(145deg, #00b4d8, #0077b6);
+            color: #fff;
             text-decoration: none;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: bold;
+            padding: 13px 24px;
+            border-radius: 40px;
+            font-weight: 600;
             text-align: center;
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
             width: 100%;
-            font-size: 1rem;
+            font-size: 0.95rem;
             margin-top: auto;
-            box-shadow: 0 5px 15px rgba(0,180,216,0.3);
+            box-shadow: 0 8px 20px rgba(0,180,216,0.35);
+            position: relative;
+            z-index: 1;
         }
 
         .btn-quiz:hover {
-            background: linear-gradient(135deg, #0096c7, #005f8e);
+            background: linear-gradient(145deg, #0096c7, #005f8e);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0,180,216,0.4);
+            box-shadow: 0 16px 30px rgba(0,180,216,0.5);
         }
 
         .btn-quiz.disabled {
             background: rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.35);
+            box-shadow: none;
             cursor: not-allowed;
-            box-shadow: none;
-        }
-
-        .btn-quiz.disabled:hover {
-            transform: none;
-            box-shadow: none;
+            pointer-events: none;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         .status {
             display: inline-block;
             padding: 4px 12px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            margin-left: 10px;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 600;
         }
 
         .status.ativa {
-            background: rgba(40,167,69,0.2);
+            background: rgba(0,255,150,0.15);
             color: #4ade80;
             border: 1px solid rgba(74,222,128,0.3);
         }
 
         .status.breve {
-            background: rgba(255,179,71,0.2);
-            color: #ffb347;
-            border: 1px solid rgba(255,179,71,0.3);
+            background: rgba(0,180,216,0.15);
+            color: #00b4d8;
+            border: 1px solid rgba(0,180,216,0.3);
         }
 
-        /* SEÇÃO DE REDES SOCIAIS (agora só no header, removi a duplicada) */
+        .placeholder-message {
+            text-align: center;
+            padding: 48px 24px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 32px;
+            border: 2px dashed rgba(0,180,216,0.3);
+            color: rgba(255,255,255,0.6);
+        }
+
+        .placeholder-message i {
+            font-size: 3.2rem;
+            color: #00b4d8;
+            margin-bottom: 16px;
+            opacity: 0.6;
+            display: block;
+        }
+
         footer {
             text-align: center;
             padding: 30px;
-            color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.4);
             margin-top: 40px;
-        }
-
-        /* SEÇÕES DOS OUTROS TRIMESTRES */
-        .trimestre-placeholder {
-            text-align: center;
-            padding: 60px 30px;
-        }
-
-        .trimestre-placeholder h3 {
-            color: #ffb347;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-        }
-
-        .trimestre-placeholder p {
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-        }
-
-        .btn-pasta {
-            display: inline-block;
-            background: linear-gradient(135deg, #00b4d8, #0077b6);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            margin: 10px;
-            border: none;
-            transition: all 0.3s;
-        }
-
-        .btn-pasta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,180,216,0.3);
-        }
-
-        .btn-paga {
-            background: linear-gradient(135deg, #ffb347, #ff8c00) !important;
-            color: #1e2f4a !important;
+            font-weight: 500;
         }
 
         @media (max-width: 768px) {
-            .licoes-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .logo-img {
-                max-width: 120px;
-            }
-            
-            .trimestre h2 {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
-            }
-            
-            .licao-card h3 {
-                padding-right: 0;
-                font-size: 1rem;
-            }
-            
-            .trimestre-links {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .trimestre-btn {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .saudacao {
-                padding: 20px;
-            }
-            
-            .social-icons-header {
-                gap: 15px;
-            }
-            
-            .social-icon-header {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            body {
-                padding: 10px;
-            }
-            
-            header {
-                padding: 25px 15px 20px;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .subtitle {
-                font-size: 1rem;
-            }
-            
-            .subtitle strong {
-                padding: 4px 12px;
-                font-size: 0.9rem;
-            }
-            
-            .trimestre {
-                padding: 20px 15px;
-            }
-            
-            .licao-card {
-                padding: 20px;
-            }
-            
-            .saudacao {
-                padding: 15px;
-            }
-        }
-
-        /* Animações */
-        .fade-in {
-            animation: fadeInUp 0.6s ease-out forwards;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            h1 { font-size: 2rem; }
+            .logo-img { max-width: 110px; }
+            .trimestre-header { padding: 18px 22px; }
+            .trimestre-header h2 { font-size: 1.3rem; gap: 10px; }
+            .trimestre-conteudo.open { padding: 0 18px 22px; }
+            .descricao-detalhada { padding: 20px; }
+            .capa-revista img { max-width: 100%; }
+            .licoes-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -546,33 +593,27 @@
     <canvas id="particles"></canvas>
 
     <div class="container">
-        <!-- HEADER NOVO MODELO (mais limpo, com redes sociais) -->
         <header>
-            <img src="https://i.imgur.com/vsNu5IC.png" alt="Logo EBD" class="logo-img">
-            
-            <h1>Quizes da EBD Fiel</h1>
-            <p class="subtitle">Quizes Interativos <strong>Classe Jovens</strong></p>
-            <p class="header-description">Teste seu conhecimento com os quizes das lições da EBD</p>
-            
-            <!-- Redes sociais no cabeçalho (mesmo estilo da página de adultos) -->
-            <div class="header-social">
+            <img src="https://i.imgur.com/vsNu5IC.png" alt="Logo EBD" class="logo-img" id="logoImg">
+            <h1>Quizzes da EBD Fiel</h1>
+            <p class="subtitle">Quizzes Interativos <strong>Classe Jovens</strong></p>
+            <p style="color: rgba(255,255,255,0.55); margin-top: 16px;">Teste seu conhecimento com os quizzes das lições da EBD</p>
+
+            <div class="redes-sociais">
                 <h3>Siga a EBD Fiel nas redes sociais:</h3>
-                <div class="social-icons-header">
-                    <a href="https://www.instagram.com/ebdfiel/" class="social-icon-header" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/EBDFiel/" class="social-icon-header" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.youtube.com/@EBDFiel" class="social-icon-header" target="_blank"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.tiktok.com/@ebdfiel" class="social-icon-header" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/ebdfiel/" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/EBDFiel/" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@EBDFiel" class="social-icon" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@ebdfiel" class="social-icon" target="_blank"><i class="fab fa-tiktok"></i></a>
                 </div>
             </div>
         </header>
-        
-        <!-- MENSAGEM DE SAUDAÇÃO E EXPLICAÇÃO -->
+
         <div class="saudacao">
-            <h2>📖 Bem-vindo à Escola Bíblica Dominical - Jovens 2026!</h2>
-            
-            <p>Esta página foi desenvolvida para auxiliar no estudo e fixação das lições da EBD para a classe de Jovens no ano de 2026.</p>
-            
-            <p><strong>Finalidade dos Quizzes:</strong></p>
+            <h2>📚 Bem-vindo à Página de Quizzes - Jovens</h2>
+            <p>Esta página foi criada para ajudar no estudo e fixação das lições da EBD Betel, com foco especial na classe de Jovens.</p>
+            <p><strong>Objetivo dos Quizzes:</strong></p>
             <ul>
                 <li><strong>Reforçar o aprendizado:</strong> Testar o conhecimento adquirido em cada lição</li>
                 <li><strong>Preparar para as aulas:</strong> Revisar os principais conceitos antes da aula dominical</li>
@@ -580,307 +621,293 @@
                 <li><strong>Tornar o estudo interativo:</strong> Transformar o estudo bíblico em uma experiência dinâmica</li>
                 <li><strong>Facilitar o ensino:</strong> Professores podem usar os quizzes para preparar suas aulas</li>
             </ul>
-            
             <div class="destaque">
-                <p><strong>✨ Como usar esta plataforma:</strong></p>
-                <p>1. Selecione o trimestre desejado no menu abaixo</p>
-                <p>2. Encontre a lição da semana correspondente</p>
-                <p>3. Clique em "Iniciar Quiz" para testar seu conhecimento</p>
-                <p>4. Revise as questões e estude os pontos que você errou</p>
+                <p><strong>📝 Como usar esta plataforma:</strong></p>
+                <p>1. Clique no trimestre desejado para expandir as lições.</p>
+                <p>2. Escolha a lição e clique em "Iniciar Quiz".</p>
+                <p>3. Responda as questões e revise seus erros.</p>
+                <p><strong>⚠️ Liberação de lições:</strong> As lições serão liberadas automaticamente às sextas-feiras que antecedem o domingo de cada aula. Clique 5 vezes no logo para abrir o painel de administração e liberar uma lição antecipadamente.</p>
             </div>
-            
-            <p>Os quizzes serão disponibilizados semanalmente, seguindo o calendário das lições. As lições futuras serão marcadas como "Em preparação" até estarem prontas para uso.</p>
-            
-            <p>Que Deus abençoe seu estudo da Palavra e que estes recursos contribuam para seu crescimento espiritual!</p>
+            <p style="margin-top:14px;">Que Deus abençoe seu estudo!</p>
         </div>
-        
-        <!-- NAVEGAÇÃO ENTRE TRIMESTRES -->
-        <div class="nav-trimestres">
-            <h3>📅 Selecione o Trimestre:</h3>
-            <div class="trimestre-links">
-                <a href="#trimestre-1" class="trimestre-btn active" data-trimestre="1">
-                    1º Trimestre (Jan-Mar)
-                </a>
-                <a href="#trimestre-2" class="trimestre-btn inactive" data-trimestre="2">
-                    2º Trimestre (Abr-Jun) - Em breve
-                </a>
-                <a href="#trimestre-3" class="trimestre-btn inactive" data-trimestre="3">
-                    3º Trimestre (Jul-Set) - Em breve
-                </a>
-                <a href="#trimestre-4" class="trimestre-btn inactive" data-trimestre="4">
-                    4º Trimestre (Out-Dez) - Em breve
-                </a>
-            </div>
-        </div>
-        
-        <!-- PRIMEIRO TRIMESTRE -->
-        <div id="trimestre-1" class="trimestre active">
-            <h2>
-                <span>1º Trimestre 2026 - Jovens</span>
-                <span class="badge">Jan-Mar</span>
-            </h2>
-            <p style="margin-bottom: 25px; color: rgba(255,255,255,0.8); font-size: 1.1rem;">
-                <strong>Tema:</strong> As Bem-Aventuranças do Reino de Deus
-            </p>
-            
-            <div class="licoes-grid">
-                <!-- Lição 01 -->
-                <div class="licao-card">
-                    <div class="numero">01</div>
-                    <h3>As Beatitudes do Reino de Deus</h3>
-                    <div class="data">
-                        <span>📅</span> 04/01/2026
-                        <span class="status ativa">Disponível</span>
-                    </div>
-                    <a href="trimestre-01/licao-01/index.html" class="btn-quiz">
-                        ▶️ Iniciar Quiz
-                    </a>
+
+        <main>
+            <!-- 1º TRIMESTRE 2026 - JOVENS -->
+            <div class="trimestre" id="trimestre1">
+                <div class="trimestre-header">
+                    <h2>
+                        <span>1º Trimestre 2026</span>
+                        <span class="badge">Jan-Mar</span>
+                    </h2>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
                 </div>
-                
-                <!-- Lição 02 -->
-                <div class="licao-card">
-                    <div class="numero">02</div>
-                    <h3>Bem-Aventurados em Cristo</h3>
-                    <div class="data">
-                        <span>📅</span> 11/01/2026
-                        <span class="status ativa">Disponível</span>
+                <div class="trimestre-conteudo">
+                    <div class="tema-trimestre"><strong>Tema:</strong> As Bem-Aventuranças do Reino de Deus</div>
+                    <div class="capa-revista">
+                        <img src="https://i.imgur.com/k4G2Qdr.jpeg" alt="Capa da Revista Jovens - 1º Trimestre 2026">
                     </div>
-                    <a href="trimestre-01/licao-02/index.html" class="btn-quiz">
-                        ▶️ Iniciar Quiz
-                    </a>
-                </div>
-                
-                <!-- Lição 03 -->
-                <div class="licao-card">
-                    <div class="numero">03</div>
-                    <h3>Bem-Aventurados os pobres de espírito</h3>
-                    <div class="data">
-                        <span>📅</span> 18/01/2026
-                        <span class="status ativa">Disponível</span>
+                    <div class="descricao-detalhada">
+                        <p>Neste primeiro trimestre do ano 2026, estudaremos as Bem-Aventuranças, o sermão inaugural do Reino de Deus proferido por Jesus no Sermão do Monte. As bem-aventuranças descrevem o caráter do verdadeiro discípulo de Cristo e nos ensinam os princípios fundamentais para uma vida cristã autêntica e abençoada.</p>
+                        <p style="margin-top:12px;">Cada lição nos levará a refletir sobre como aplicar essas verdades eternas em nosso cotidiano, especialmente na juventude, onde somos desafiados a viver de forma contracultural, demonstrando o poder transformador do evangelho.</p>
+                        <p style="margin-top:12px;">Que este trimestre seja uma oportunidade de aprofundarmos nossa compreensão sobre o Reino de Deus e de nos comprometermos a viver como verdadeiros discípulos de Cristo, sendo sal da terra e luz do mundo.</p>
                     </div>
-                    <a href="trimestre-01/licao-03/index.html" class="btn-quiz">
-                        ▶️ Iniciar Quiz
-                    </a>
-                </div>
-                
-                <!-- Lição 04 -->
-                <div class="licao-card">
-                    <div class="numero">04</div>
-                    <h3>Bem-Aventurados os que choram por seus pecados</h3>
-                    <div class="data">
-                        <span>📅</span> 25/01/2026
-                        <span class="status ativa">Disponível</span>
+
+                    <!-- Vídeo complementar (Lição 01) -->
+                    <div class="video-trimestre">
+                        <h3><i class="fas fa-video"></i> Vídeo Introdução - As Bem-Aventuranças</h3>
+                        <div class="video-universal-container">
+                            <div class="video-responsive-wrapper">
+                                <iframe src="https://www.youtube.com/embed/bFRykKpUv2c?rel=0&modestbranding=1&playsinline=1" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <p><strong>Assista ao vídeo complementar.</strong></p>
+                            <a href="https://www.youtube.com/watch?v=bFRykKpUv2c" target="_blank" class="video-direct-link"><i class="fab fa-youtube"></i> Assistir no YouTube</a>
+                        </div>
                     </div>
-                    <a href="trimestre-01/licao-04/index.html" class="btn-quiz">
-                        ▶️ Iniciar Quiz
-                    </a>
-                </div>
-                
-                <!-- Lição 05 -->
-                <div class="licao-card">
-                    <div class="numero">05</div>
-                    <h3>Bem-Aventurados os mansos</h3>
-                    <div class="data">
-                        <span>📅</span> 01/02/2026
-                        <span class="status ativa">Disponível</span>
+
+                    <div class="licoes-grid" id="licoes-1tri">
+                        <!-- Lições do 1º Trimestre Jovens -->
+                        <div class="licao-card" data-lesson="1">
+                            <div class="numero">01</div>
+                            <h3>As Beatitudes do Reino de Deus</h3>
+                            <div class="data">
+                                <span>📅</span> 04/01/2026
+                                <span class="status ativa">Disponível</span>
+                                <span class="release-date"></span>
+                            </div>
+                            <div class="progress-bar"><div class="progress" style="width:100%"></div></div>
+                            <a href="trimestre-01/licao-01/index.html" class="btn-quiz"><i class="fas fa-play-circle"></i> Iniciar Quiz</a>
+                        </div>
+                        <div class="licao-card" data-lesson="2">
+                            <div class="numero">02</div>
+                            <h3>Bem-Aventurados em Cristo</h3>
+                            <div class="data">
+                                <span>📅</span> 11/01/2026
+                                <span class="status ativa">Disponível</span>
+                                <span class="release-date"></span>
+                            </div>
+                            <div class="progress-bar"><div class="progress" style="width:100%"></div></div>
+                            <a href="trimestre-01/licao-02/index.html" class="btn-quiz"><i class="fas fa-play-circle"></i> Iniciar Quiz</a>
+                        </div>
+                        <div class="licao-card" data-lesson="3">
+                            <div class="numero">03</div>
+                            <h3>Bem-Aventurados os pobres de espírito</h3>
+                            <div class="data">
+                                <span>📅</span> 18/01/2026
+                                <span class="status ativa">Disponível</span>
+                                <span class="release-date"></span>
+                            </div>
+                            <div class="progress-bar"><div class="progress" style="width:100%"></div></div>
+                            <a href="trimestre-01/licao-03/index.html" class="btn-quiz"><i class="fas fa-play-circle"></i> Iniciar Quiz</a>
+                        </div>
+                        <div class="licao-card" data-lesson="4">
+                            <div class="numero">04</div>
+                            <h3>Bem-Aventurados os que choram por seus pecados</h3>
+                            <div class="data">
+                                <span>📅</span> 25/01/2026
+                                <span class="status ativa">Disponível</span>
+                                <span class="release-date"></span>
+                            </div>
+                            <div class="progress-bar"><div class="progress" style="width:100%"></div></div>
+                            <a href="trimestre-01/licao-04/index.html" class="btn-quiz"><i class="fas fa-play-circle"></i> Iniciar Quiz</a>
+                        </div>
+                        <div class="licao-card" data-lesson="5">
+                            <div class="numero">05</div>
+                            <h3>Bem-Aventurados os mansos</h3>
+                            <div class="data">
+                                <span>📅</span> 01/02/2026
+                                <span class="status ativa">Disponível</span>
+                                <span class="release-date"></span>
+                            </div>
+                            <div class="progress-bar"><div class="progress" style="width:100%"></div></div>
+                            <a href="trimestre-01/licao-05/index.html" class="btn-quiz"><i class="fas fa-play-circle"></i> Iniciar Quiz</a>
+                        </div>
+                        <div class="licao-card" data-lesson="6">
+                            <div class="numero">06</div>
+                            <h3>Bem-Aventurados os que têm fome e sede de justiça</h3>
+                            <div class="data">
+                                <span>📅</span> 08/02/2026
+                                <span class="status ativa">Disponível</span>
+                                <span class="release-date"></span>
+                            </div>
+                            <div class="progress-bar"><div class="progress" style="width:100%"></div></div>
+                            <a href="trimestre-01/licao-06/index.html" class="btn-quiz"><i class="fas fa-play-circle"></i> Iniciar Quiz</a>
+                        </div>
+                        <div class="licao-card" data-lesson="7">
+                            <div class="numero">07</div>
+                            <h3>Bem-Aventurados os misericordiosos</h3>
+                            <div class="data">
+                                <span>📅</span> 15/02/2026
+                                <span class="status ativa">Disponível</span>
+                                <span class="release-date"></span>
+                            </div>
+                            <div class="progress-bar"><div class="progress" style="width:100%"></div></div>
+                            <a href="trimestre-01/licao-07/index.html" class="btn-quiz"><i class="fas fa-play-circle"></i> Iniciar Quiz</a>
+                        </div>
+                        <div class="licao-card" data-lesson="8">
+                            <div class="numero">08</div>
+                            <h3>Bem-Aventurados os limpos de coração</h3>
+                            <div class="data">
+                                <span>📅</span> 22/02/2026
+                                <span class="status ativa">Disponível</span>
+                                <span class="release-date"></span>
+                            </div>
+                            <div class="progress-bar"><div class="progress" style="width:100%"></div></div>
+                            <a href="trimestre-01/licao-08/index.html" class="btn-quiz"><i class="fas fa-play-circle"></i> Iniciar Quiz</a>
+                        </div>
+                        <div class="licao-card" data-lesson="9">
+                            <div class="numero">09</div>
+                            <h3>Bem-Aventurados os pacificadores</h3>
+                            <div class="data">
+                                <span>📅</span> 01/03/2026
+                                <span class="status ativa">Disponível</span>
+                                <span class="release-date"></span>
+                            </div>
+                            <div class="progress-bar"><div class="progress" style="width:100%"></div></div>
+                            <a href="trimestre-01/licao-09/index.html" class="btn-quiz"><i class="fas fa-play-circle"></i> Iniciar Quiz</a>
+                        </div>
+                        <div class="licao-card" data-lesson="10">
+                            <div class="numero">10</div>
+                            <h3>Bem-Aventurados os perseguidos por causa da justiça</h3>
+                            <div class="data">
+                                <span>📅</span> 08/03/2026
+                                <span class="status ativa">Disponível</span>
+                                <span class="release-date"></span>
+                            </div>
+                            <div class="progress-bar"><div class="progress" style="width:100%"></div></div>
+                            <a href="trimestre-01/licao-10/index.html" class="btn-quiz"><i class="fas fa-play-circle"></i> Iniciar Quiz</a>
+                        </div>
+                        <div class="licao-card" data-lesson="11">
+                            <div class="numero">11</div>
+                            <h3>O sal da terra e a luz do mundo</h3>
+                            <div class="data">
+                                <span>📅</span> 15/03/2026
+                                <span class="status ativa">Disponível</span>
+                                <span class="release-date"></span>
+                            </div>
+                            <div class="progress-bar"><div class="progress" style="width:100%"></div></div>
+                            <a href="trimestre-01/licao-11/index.html" class="btn-quiz"><i class="fas fa-play-circle"></i> Iniciar Quiz</a>
+                        </div>
+                        <div class="licao-card" data-lesson="12">
+                            <div class="numero">12</div>
+                            <h3>Esmola, oração e jejum são práticas espirituais</h3>
+                            <div class="data">
+                                <span>📅</span> 22/03/2026
+                                <span class="status ativa">Disponível</span>
+                                <span class="release-date"></span>
+                            </div>
+                            <div class="progress-bar"><div class="progress" style="width:100%"></div></div>
+                            <a href="trimestre-01/licao-12/index.html" class="btn-quiz"><i class="fas fa-play-circle"></i> Iniciar Quiz</a>
+                        </div>
+                        <div class="licao-card" data-lesson="13">
+                            <div class="numero">13</div>
+                            <h3>Não andeis ansiosos</h3>
+                            <div class="data">
+                                <span>📅</span> 29/03/2026
+                                <span class="status ativa">Disponível</span>
+                                <span class="release-date"></span>
+                            </div>
+                            <div class="progress-bar"><div class="progress" style="width:100%"></div></div>
+                            <a href="trimestre-01/licao-13/index.html" class="btn-quiz"><i class="fas fa-play-circle"></i> Iniciar Quiz</a>
+                        </div>
                     </div>
-                    <a href="trimestre-01/licao-05/index.html" class="btn-quiz">
-                        ▶️ Iniciar Quiz
-                    </a>
-                </div>
-                
-                <!-- Lição 06 -->
-                <div class="licao-card">
-                    <div class="numero">06</div>
-                    <h3>Bem-Aventurados os que têm fome e sede de justiça</h3>
-                    <div class="data">
-                        <span>📅</span> 08/02/2026
-                        <span class="status ativa">Disponível</span>
-                    </div>
-                    <a href="trimestre-01/licao-06/index.html" class="btn-quiz">
-                        ▶️ Iniciar Quiz
-                    </a>
-                </div>
-                
-                <!-- Lição 07 -->
-                <div class="licao-card">
-                    <div class="numero">07</div>
-                    <h3>Bem-Aventurados os misericordiosos</h3>
-                    <div class="data">
-                        <span>📅</span> 15/02/2026
-                        <span class="status ativa">Disponível</span>
-                    </div>
-                    <a href="trimestre-01/licao-07/index.html" class="btn-quiz">
-                        ▶️ Iniciar Quiz
-                    </a>
-                </div>
-                
-                <!-- Lição 08 -->
-                <div class="licao-card">
-                    <div class="numero">08</div>
-                    <h3>Bem-Aventurados os limpos de coração</h3>
-                    <div class="data">
-                        <span>📅</span> 22/02/2026
-                        <span class="status ativa">Disponível</span>
-                    </div>
-                    <a href="trimestre-01/licao-08/index.html" class="btn-quiz">
-                        ▶️ Iniciar Quiz
-                    </a>
-                </div>
-                
-                <!-- Lição 09 -->
-                <div class="licao-card">
-                    <div class="numero">09</div>
-                    <h3>Bem-Aventurados os pacificadores</h3>
-                    <div class="data">
-                        <span>📅</span> 01/03/2026
-                        <span class="status ativa">Disponível</span>
-                    </div>
-                    <a href="trimestre-01/licao-09/index.html" class="btn-quiz">
-                        ▶️ Iniciar Quiz
-                    </a>
-                </div>
-                
-                <!-- Lição 10 -->
-                <div class="licao-card">
-                    <div class="numero">10</div>
-                    <h3>Bem-Aventurados os perseguidos por causa da justiça</h3>
-                    <div class="data">
-                        <span>📅</span> 08/03/2026
-                        <span class="status ativa">Disponível</span>
-                    </div>
-                    <a href="trimestre-01/licao-10/index.html" class="btn-quiz">
-                        ▶️ Iniciar Quiz
-                    </a>
-                </div>
-                
-                <!-- Lição 11 -->
-                <div class="licao-card">
-                    <div class="numero">11</div>
-                    <h3>O sal da terra e a luz do mundo</h3>
-                    <div class="data">
-                        <span>📅</span> 15/03/2026
-                        <span class="status ativa">Disponível</span>
-                    </div>
-                    <a href="trimestre-01/licao-11/index.html" class="btn-quiz">
-                        ▶️ Iniciar Quiz
-                    </a>
-                </div>
-                
-                <!-- Lição 12 -->
-                <div class="licao-card">
-                    <div class="numero">12</div>
-                    <h3>Esmola, oração e jejum são práticas espirituais</h3>
-                    <div class="data">
-                        <span>📅</span> 22/03/2026
-                        <span class="status ativa">Disponível</span>
-                    </div>
-                    <a href="trimestre-01/licao-12/index.html" class="btn-quiz">
-                        ▶️ Iniciar Quiz
-                    </a>
-                </div>
-                
-                <!-- Lição 13 -->
-                <div class="licao-card">
-                    <div class="numero">13</div>
-                    <h3>Não andeis ansiosos</h3>
-                    <div class="data">
-                        <span>📅</span> 29/03/2026
-                        <span class="status ativa">Disponível</span>
-                    </div>
-                    <a href="trimestre-01/licao-13/index.html" class="btn-quiz">
-                        ▶️ Iniciar Quiz
-                    </a>
                 </div>
             </div>
-        </div>
-        
-        <!-- SEGUNDO TRIMESTRE -->
-        <div id="trimestre-2" class="trimestre">
-            <h2>
-                <span>2º Trimestre 2026 - Jovens</span>
-                <span class="badge">Abr-Jun</span>
-            </h2>
-            <div class="trimestre-placeholder">
-                <h3>🚧 Em Construção 🚧</h3>
-                <p>O conteúdo do 2º Trimestre 2026 estará disponível em breve.</p>
-                <p><strong>Tema previsto:</strong> A Vida de Jesus - Seus Milagres e Parábolas</p>
-                <p><strong>Período:</strong> 05/04 a 28/06 de 2026</p>
-                <div style="margin-top: 30px;">
-                    <a href="#" class="btn-pasta" onclick="criarPasta('trimestre-02')">📁 Criar Estrutura do 2º Trimestre</a>
-                    <a href="#" class="btn-pasta btn-paga" style="background: #FF7A5A;" onclick="window.open('https://github.com', '_blank')">⚙️ Configurar no GitHub</a>
+
+            <!-- 2º TRIMESTRE 2026 - JOVENS (com liberação por datas) -->
+            <div class="trimestre" id="trimestre2">
+                <div class="trimestre-header">
+                    <h2>
+                        <span>2º Trimestre 2026</span>
+                        <span class="badge">Abr-Jun</span>
+                    </h2>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="trimestre-conteudo">
+                    <div class="tema-trimestre"><strong>Tema:</strong> A Vida de Jesus - Seus Milagres e Parábolas</div>
+                    <div class="capa-revista">
+                        <img src="https://i.imgur.com/hGrQk9q.jpeg" alt="Capa da Revista Jovens - 2º Trimestre 2026">
+                    </div>
+                    <div class="descricao-detalhada">
+                        <p>Neste segundo trimestre, estudaremos a vida e o ministério de Jesus Cristo através de seus milagres e parábolas. Acompanharemos como Jesus demonstrou seu poder divino e ensinou verdades profundas sobre o Reino de Deus por meio de histórias e ações transformadoras.</p>
+                        <p style="margin-top:12px;">Cada milagre revela um aspecto do caráter de Deus e seu amor pela humanidade, enquanto as parábolas nos desafiam a viver de acordo com os princípios do Reino. Para a juventude, esses ensinamentos são fundamentais para compreender quem é Jesus e como podemos segui-lo em nossa geração.</p>
+                        <p style="margin-top:12px;"><strong>Observação:</strong> As lições serão liberadas automaticamente às sextas-feiras que antecedem o domingo de cada aula. Clique 5 vezes no logo para abrir o painel de administração e liberar uma lição antecipadamente.</p>
+                    </div>
+                    <div class="licoes-grid" id="licoes-2tri">
+                        <!-- As lições serão preenchidas dinamicamente pelo JS com datas de liberação -->
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <!-- TERCEIRO TRIMESTRE -->
-        <div id="trimestre-3" class="trimestre">
-            <h2>
-                <span>3º Trimestre 2026 - Jovens</span>
-                <span class="badge">Jul-Set</span>
-            </h2>
-            <div class="trimestre-placeholder">
-                <h3>📅 Planejamento</h3>
-                <p>O conteúdo do 3º Trimestre 2026 será disponibilizado no segundo semestre.</p>
-                <p><strong>Tema sugerido:</strong> A Igreja Primitiva - Atos dos Apóstolos</p>
-                <p><strong>Período:</strong> 05/07 a 27/09 de 2026</p>
-                <div style="margin-top: 30px;">
-                    <a href="#" class="btn-pasta" onclick="criarPasta('trimestre-03')">📁 Criar Estrutura do 3º Trimestre</a>
+
+            <!-- 3º e 4º trimestres com placeholder (similar ao modelo) -->
+            <div class="trimestre">
+                <div class="trimestre-header">
+                    <h2>
+                        <span>3º Trimestre 2026</span>
+                        <span class="badge">Jul-Set</span>
+                    </h2>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="trimestre-conteudo">
+                    <div class="placeholder-message">
+                        <i class="fas fa-clock"></i>
+                        <p>Quizzes do 3º trimestre de 2026 estão sendo preparados.</p>
+                        <p><small>Em breve, novas lições estarão disponíveis aqui.</small></p>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <!-- QUARTO TRIMESTRE -->
-        <div id="trimestre-4" class="trimestre">
-            <h2>
-                <span>4º Trimestre 2026 - Jovens</span>
-                <span class="badge">Out-Dez</span>
-            </h2>
-            <div class="trimestre-placeholder">
-                <h3>🎯 Para o Futuro</h3>
-                <p>O conteúdo do 4º Trimestre 2026 será preparado no último trimestre do ano.</p>
-                <p><strong>Tema sugerido:</strong> Profecias e Esperança Escatológica</p>
-                <p><strong>Período:</strong> 04/10 a 27/12 de 2026</p>
-                <div style="margin-top: 30px;">
-                    <a href="#" class="btn-pasta" onclick="criarPasta('trimestre-04')">📁 Criar Estrutura do 4º Trimestre</a>
+
+            <div class="trimestre">
+                <div class="trimestre-header">
+                    <h2>
+                        <span>4º Trimestre 2026</span>
+                        <span class="badge">Out-Dez</span>
+                    </h2>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                </div>
+                <div class="trimestre-conteudo">
+                    <div class="placeholder-message">
+                        <i class="fas fa-clock"></i>
+                        <p>Quizzes do 4º trimestre de 2026 estão sendo preparados.</p>
+                        <p><small>Em breve, novas lições estarão disponíveis aqui.</small></p>
+                    </div>
                 </div>
             </div>
-        </div>
-        
+        </main>
+
         <footer>
-            <p>© 2026 - Escola Bíblica Dominical - Classe de Jovens</p>
-            <p style="font-size: 0.9rem; opacity: 0.8; margin-top: 10px;">
-                Para estudo e edificação da juventude cristã
-            </p>
+            <p>© 2026 - EBD Fiel - Classe Jovens</p>
+            <p style="font-size: 0.9rem; opacity: 0.5; margin-top: 4px;">Fiel à Palavra</p>
         </footer>
     </div>
-    
+
     <script>
-        // Partículas de fundo
-        const canvas = document.getElementById('particles');
-        const ctx = canvas.getContext('2d');
-        
+        // ===== PARTÍCULAS =====
+        const canvas = document.getElementById("particles");
+        const ctx = canvas.getContext("2d");
+
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
-        
-        const particles = Array.from({ length: 100 }, () => ({
+
+        const particles = Array.from({ length: 90 }, () => ({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            r: Math.random() * 2,
-            d: Math.random() * 1 + 0.5,
-            o: Math.random() * 0.3 + 0.1
+            r: Math.random() * 1.8 + 0.3,
+            d: Math.random() * 0.6 + 0.2,
+            o: Math.random() * 0.4 + 0.1
         }));
-        
+
         function drawParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach(p => {
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 180, 70, ${p.o})`;
+                ctx.fillStyle = `rgba(0, 180, 216, ${p.o})`;
                 ctx.fill();
                 p.y += p.d;
                 if (p.y > canvas.height) {
@@ -892,75 +919,183 @@
         }
         drawParticles();
 
-        // Navegação entre trimestres
-        document.addEventListener('DOMContentLoaded', function() {
-            const trimestreButtons = document.querySelectorAll('.trimestre-btn');
-            const trimestreSections = document.querySelectorAll('.trimestre');
-            
-            // Verifica se a logo carrega
-            const logoImg = document.querySelector('.logo-img');
-            logoImg.onerror = function() {
-                this.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="%235D3FD3"/><text x="50" y="60" font-family="Arial" font-size="24" fill="white" text-anchor="middle">EBD</text><text x="50" y="80" font-family="Arial" font-size="12" fill="white" text-anchor="middle">JOVENS</text></svg>';
-            };
-            
-            // Configura navegação por hash na URL
-            function showTrimestre(trimestreId) {
-                // Remove active de todas as seções
-                trimestreSections.forEach(section => {
-                    section.classList.remove('active');
+        // ===== ACCORDION ANIMADO =====
+        document.querySelectorAll('.trimestre-header').forEach(header => {
+            header.addEventListener('click', function () {
+                const conteudo = this.nextElementSibling;
+                const isOpen = conteudo.classList.contains('open');
+
+                // Fecha todos
+                document.querySelectorAll('.trimestre-conteudo').forEach(c => {
+                    c.style.maxHeight = null;
+                    c.classList.remove('open');
                 });
-                
-                // Remove active de todos os botões
-                trimestreButtons.forEach(button => {
-                    button.classList.remove('active');
-                    button.classList.add('inactive');
-                });
-                
-                // Ativa a seção e botão correspondentes
-                const targetSection = document.getElementById(`trimestre-${trimestreId}`);
-                const targetButton = document.querySelector(`[data-trimestre="${trimestreId}"]`);
-                
-                if (targetSection) {
-                    targetSection.classList.add('active');
+                document.querySelectorAll('.trimestre-header').forEach(h => h.classList.remove('open'));
+
+                // Abre o clicado (se estava fechado)
+                if (!isOpen) {
+                    conteudo.classList.add('open');
+                    conteudo.style.maxHeight = conteudo.scrollHeight + "px";
+                    this.classList.add('open');
                 }
-                
-                if (targetButton) {
-                    targetButton.classList.remove('inactive');
-                    targetButton.classList.add('active');
-                }
-                
-                // Atualiza a URL sem recarregar a página
-                history.pushState(null, null, `#trimestre-${trimestreId}`);
-            }
-            
-            // Configura eventos dos botões
-            trimestreButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    if (this.classList.contains('inactive')) {
-                        e.preventDefault();
-                        return;
-                    }
-                    
-                    const trimestreId = this.getAttribute('data-trimestre');
-                    showTrimestre(trimestreId);
-                });
             });
-            
-            // Verifica hash na URL ao carregar
-            const hash = window.location.hash;
-            if (hash) {
-                const trimestreId = hash.replace('#trimestre-', '');
-                if (trimestreId >= 1 && trimestreId <= 4) {
-                    showTrimestre(trimestreId);
-                }
-            }
-            
-            // Função para simular criação de pastas (apenas demonstração)
-            window.criarPasta = function(nomePasta) {
-                alert(`Para criar a pasta "${nomePasta}/" no GitHub:\n\n1. Vá em "Add file" → "Create new file"\n2. Digite: "${nomePasta}/licao-01/index.html"\n3. Isso criará automaticamente todas as pastas necessárias.\n\nRepita para as 13 lições.`);
-                return false;
-            };
         });
+
+        // ===== DATAS DE LIBERAÇÃO DAS LIÇÕES DO 2º TRIMESTRE =====
+        const lessonReleaseDates2tri = [
+            { lesson: 1, releaseDate: new Date(2026, 3, 3) },  // 03/04/2026
+            { lesson: 2, releaseDate: new Date(2026, 3, 10) }, // 10/04/2026
+            { lesson: 3, releaseDate: new Date(2026, 3, 17) }, // 17/04/2026
+            { lesson: 4, releaseDate: new Date(2026, 3, 24) }, // 24/04/2026
+            { lesson: 5, releaseDate: new Date(2026, 4, 1) },  // 01/05/2026
+            { lesson: 6, releaseDate: new Date(2026, 4, 8) },  // 08/05/2026
+            { lesson: 7, releaseDate: new Date(2026, 4, 15) }, // 15/05/2026
+            { lesson: 8, releaseDate: new Date(2026, 4, 22) }, // 22/05/2026
+            { lesson: 9, releaseDate: new Date(2026, 4, 29) }, // 29/05/2026
+            { lesson: 10, releaseDate: new Date(2026, 5, 5) }, // 05/06/2026
+            { lesson: 11, releaseDate: new Date(2026, 5, 12) },// 12/06/2026
+            { lesson: 12, releaseDate: new Date(2026, 5, 19) },// 19/06/2026
+            { lesson: 13, releaseDate: new Date(2026, 5, 26) } // 26/06/2026
+        ];
+
+        const lessonsData = [
+            { num: 1, title: "O chamado que transforma a dor em propósito", date: "05/04/2026" },
+            { num: 2, title: "Preparando-se para o agir de Deus", date: "12/04/2026" },
+            { num: 3, title: "Lidando com vozes contrárias", date: "19/04/2026" },
+            { num: 4, title: "O poder das palavras: pedras que edificam e não ferem", date: "26/04/2026" },
+            { num: 5, title: "Fortalecido pela fé para combater o medo com coragem", date: "03/05/2026" },
+            { num: 6, title: "Discernimento espiritual: a sabedoria divina em tempos de engano", date: "10/05/2026" },
+            { num: 7, title: "Unidade: a receita que nos faz vencer as adversidades da vida", date: "17/05/2026" },
+            { num: 8, title: "A fidelidade e o temor: características que geram confiança", date: "24/05/2026" },
+            { num: 9, title: "Alegria e gratidão ao Senhor resultam da Palavra de Deus", date: "31/05/2026" },
+            { num: 10, title: "O arrependimento: aspecto indispensável para uma nova vida", date: "07/06/2026" },
+            { num: 11, title: "O culto: a importância para uma vida cristã edificada", date: "14/06/2026" },
+            { num: 12, title: "Vigilância e oração: o perigo das alianças erradas", date: "21/06/2026" },
+            { num: 13, title: "Os elementos fundamentais da vitória de Neemias", date: "28/06/2026" }
+        ];
+
+        function formatDate(date) {
+            const day = date.getDate().toString().padStart(2, '0');
+            const month = (date.getMonth() + 1).toString().padStart(2, '0');
+            const year = date.getFullYear();
+            return `${day}/${month}/${year}`;
+        }
+
+        function isLessonAvailable(lessonNumber) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            const forcedLesson = localStorage.getItem('force_lesson');
+            if (forcedLesson && parseInt(forcedLesson) === lessonNumber) {
+                return true;
+            }
+
+            const lessonInfo = lessonReleaseDates2tri.find(item => item.lesson === lessonNumber);
+            if (!lessonInfo) return false;
+            return today >= lessonInfo.releaseDate;
+        }
+
+        function buildSecondTrimestre() {
+            const container = document.getElementById('licoes-2tri');
+            if (!container) return;
+
+            container.innerHTML = '';
+            lessonsData.forEach(lesson => {
+                const available = isLessonAvailable(lesson.num);
+                const releaseInfo = lessonReleaseDates2tri.find(item => item.lesson === lesson.num);
+                const releaseDateStr = releaseInfo ? formatDate(releaseInfo.releaseDate) : '';
+
+                const card = document.createElement('div');
+                card.className = 'licao-card';
+                card.setAttribute('data-lesson', lesson.num);
+                card.innerHTML = `
+                    <div class="numero">${lesson.num.toString().padStart(2, '0')}</div>
+                    <h3>${lesson.title}</h3>
+                    <div class="data">
+                        <span>📅</span> ${lesson.date}
+                        <span class="status ${available ? 'ativa' : 'breve'}">${available ? 'Disponível' : 'Em preparação'}</span>
+                        <span class="release-date" style="${available ? 'display:none' : 'display:inline-block'}">📆 Disponível a partir de ${releaseDateStr}</span>
+                    </div>
+                    <div class="progress-bar"><div class="progress" style="width:${available ? '100%' : '0%'}"></div></div>
+                    <a href="${available ? `trimestre-02/licao-${lesson.num.toString().padStart(2, '0')}/` : '#'}" class="btn-quiz ${!available ? 'disabled' : ''}">
+                        ${available ? '<i class="fas fa-play-circle"></i> Iniciar Quiz' : '<i class="fas fa-clock"></i> Em preparação'}
+                    </a>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        // ===== PAINEL ADMIN (CLIQUE 5 VEZES NO LOGO) =====
+        let logoClickCount = 0;
+        const logo = document.getElementById('logoImg');
+        const adminPanel = document.createElement('div');
+        adminPanel.id = 'admin-panel';
+        adminPanel.style.position = 'fixed';
+        adminPanel.style.bottom = '20px';
+        adminPanel.style.right = '20px';
+        adminPanel.style.backgroundColor = 'rgba(0,0,0,0.9)';
+        adminPanel.style.backdropFilter = 'blur(10px)';
+        adminPanel.style.padding = '15px';
+        adminPanel.style.borderRadius = '20px';
+        adminPanel.style.zIndex = '9999';
+        adminPanel.style.border = '1px solid #00b4d8';
+        adminPanel.style.display = 'none';
+        adminPanel.style.flexDirection = 'column';
+        adminPanel.style.gap = '10px';
+        adminPanel.style.minWidth = '200px';
+        adminPanel.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <strong style="color:#00b4d8;">Liberar lição</strong>
+                <button id="close-admin" style="background:none; border:none; color:white; cursor:pointer;">✕</button>
+            </div>
+            <select id="lesson-select" style="padding:8px; border-radius:8px; background:#1e2f4a; color:white;">
+                <option value="1">Lição 01</option>
+                <option value="2">Lição 02</option>
+                <option value="3">Lição 03</option>
+                <option value="4">Lição 04</option>
+                <option value="5">Lição 05</option>
+                <option value="6">Lição 06</option>
+                <option value="7">Lição 07</option>
+                <option value="8">Lição 08</option>
+                <option value="9">Lição 09</option>
+                <option value="10">Lição 10</option>
+                <option value="11">Lição 11</option>
+                <option value="12">Lição 12</option>
+                <option value="13">Lição 13</option>
+            </select>
+            <button id="force-release" style="background:#00b4d8; color:#fff; border:none; padding:8px; border-radius:8px; cursor:pointer;">Liberar agora</button>
+            <button id="clear-all-forces" style="background:#555; color:white; border:none; padding:8px; border-radius:8px; cursor:pointer;">Limpar todas</button>
+        `;
+        document.body.appendChild(adminPanel);
+
+        if (logo) {
+            logo.addEventListener('click', () => {
+                logoClickCount++;
+                if (logoClickCount >= 5) {
+                    adminPanel.style.display = 'flex';
+                    logoClickCount = 0;
+                }
+                setTimeout(() => { logoClickCount = 0; }, 2000);
+            });
+        }
+
+        document.getElementById('close-admin')?.addEventListener('click', () => {
+            adminPanel.style.display = 'none';
+        });
+
+        document.getElementById('force-release')?.addEventListener('click', () => {
+            const lesson = document.getElementById('lesson-select').value;
+            localStorage.setItem('force_lesson', lesson);
+            location.reload();
+        });
+
+        document.getElementById('clear-all-forces')?.addEventListener('click', () => {
+            localStorage.removeItem('force_lesson');
+            location.reload();
+        });
+
+        // Executar ao carregar a página
+        buildSecondTrimestre();
     </script>
 </body>
 </html>

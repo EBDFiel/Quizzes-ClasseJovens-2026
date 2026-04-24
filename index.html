@@ -6,7 +6,7 @@
     <title>Quizzes da EBD Fiel - Classe Jovens</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -15,15 +15,52 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-dark: #07051f;
+            --bg-mid: #17113d;
+            --cyan: #00e5ff;
+            --blue: #2563eb;
+            --purple: #8b5cf6;
+            --pink: #ec4899;
+            --orange: #fb923c;
+            --green: #22c55e;
+            --yellow: #facc15;
+            --red: #ef4444;
+            --white-soft: rgba(255,255,255,0.86);
+            --white-muted: rgba(255,255,255,0.64);
+            --glass: rgba(255,255,255,0.11);
+            --glass-strong: rgba(255,255,255,0.18);
+            --border: rgba(255,255,255,0.2);
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            background:
+                radial-gradient(circle at 8% 8%, rgba(236,72,153,0.48), transparent 28%),
+                radial-gradient(circle at 88% 8%, rgba(0,229,255,0.42), transparent 30%),
+                radial-gradient(circle at 20% 86%, rgba(250,204,21,0.26), transparent 26%),
+                radial-gradient(circle at 78% 82%, rgba(34,197,94,0.24), transparent 28%),
+                radial-gradient(circle at 50% 48%, rgba(139,92,246,0.42), transparent 38%),
+                linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-mid) 46%, #071a38 100%);
             min-height: 100vh;
             padding: 20px;
             color: #eaf6ff;
             overflow-x: hidden;
             position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
+            background-size: 42px 42px;
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent 80%);
+            pointer-events: none;
+            z-index: 0;
         }
 
         #particles {
@@ -46,14 +83,32 @@
         header {
             text-align: center;
             padding: 3rem 2rem;
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(20px);
-            border-radius: 32px;
+            background:
+                linear-gradient(145deg, rgba(255,255,255,0.17), rgba(255,255,255,0.06)),
+                linear-gradient(120deg, rgba(0,229,255,0.16), rgba(236,72,153,0.12), rgba(250,204,21,0.08));
+            backdrop-filter: blur(24px);
+            border-radius: 34px;
             margin-bottom: 24px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
-            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 28px 75px rgba(0,0,0,0.42), 0 0 42px rgba(0,229,255,0.12), inset 0 1px 0 rgba(255,255,255,0.22);
+            border: 1px solid var(--border);
             animation: fadeSlideDown 1s ease forwards;
             opacity: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            background: conic-gradient(from 180deg, var(--cyan), var(--green), var(--yellow), var(--pink), var(--purple), var(--cyan));
+            filter: blur(60px);
+            opacity: 0.18;
+            top: -180px;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
         }
 
         @keyframes fadeSlideDown {
@@ -66,46 +121,109 @@
             height: auto;
             display: block;
             margin: 0 auto 20px auto;
-            filter: drop-shadow(0 8px 24px rgba(0,180,216,0.3));
+            filter: drop-shadow(0 10px 28px rgba(0,229,255,0.42));
             animation: logoPulse 3s ease-in-out infinite;
             cursor: pointer;
+            position: relative;
+            z-index: 1;
         }
 
         @keyframes logoPulse {
-            0%, 100% { filter: drop-shadow(0 8px 24px rgba(0,180,216,0.3)); }
-            50%       { filter: drop-shadow(0 8px 32px rgba(0,180,216,0.6)); }
+            0%, 100% { filter: drop-shadow(0 10px 28px rgba(0,229,255,0.36)); transform: scale(1); }
+            50% { filter: drop-shadow(0 14px 40px rgba(236,72,153,0.52)); transform: scale(1.035); }
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background: rgba(0,229,255,0.12);
+            border: 1px solid rgba(0,229,255,0.28);
+            color: #baf8ff;
+            font-size: 0.86rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            position: relative;
+            z-index: 1;
         }
 
         h1 {
             color: #ffffff;
-            font-size: 2.6rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
+            font-size: clamp(2.1rem, 5vw, 3.4rem);
+            font-weight: 800;
+            letter-spacing: -0.055em;
             margin-bottom: 8px;
-            text-shadow: 0 2px 20px rgba(0,180,216,0.4);
+            text-shadow: 0 2px 26px rgba(0,229,255,0.38);
+            position: relative;
+            z-index: 1;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #fff, var(--cyan), var(--yellow), var(--pink), var(--purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
         .subtitle {
-            color: rgba(255,255,255,0.75);
+            color: var(--white-soft);
             font-size: 1.25rem;
-            margin-bottom: 24px;
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 1;
         }
 
         .subtitle strong {
-            color: #00b4d8;
-            font-weight: 600;
-            background: rgba(0,180,216,0.15);
+            color: #ffffff;
+            font-weight: 700;
+            background: linear-gradient(145deg, rgba(0,229,255,0.2), rgba(139,92,246,0.22));
             padding: 6px 16px;
             border-radius: 40px;
             display: inline-block;
             margin-left: 8px;
-            border: 1px solid rgba(0,180,216,0.3);
+            border: 1px solid rgba(255,255,255,0.18);
+        }
+
+        .hero-note {
+            color: var(--white-muted);
+            margin-top: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-pills {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: linear-gradient(145deg, rgba(0,229,255,0.14), rgba(236,72,153,0.12));
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.78);
+            font-size: 0.92rem;
+            font-weight: 600;
         }
 
         .redes-sociais {
             margin-top: 32px;
             padding-top: 24px;
             border-top: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            z-index: 1;
         }
 
         .redes-sociais h3 {
@@ -126,8 +244,9 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 48px; height: 48px;
-            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            border-radius: 18px;
             background: rgba(255,255,255,0.1);
             color: #fff;
             font-size: 1.4rem;
@@ -138,20 +257,22 @@
         }
 
         .social-icon:hover {
-            transform: translateY(-6px) scale(1.1);
-            background: linear-gradient(145deg, #00b4d8, #0077b6);
-            box-shadow: 0 16px 30px rgba(0,180,216,0.5);
+            transform: translateY(-6px) rotate(-3deg) scale(1.08);
+            background: linear-gradient(145deg, var(--cyan), var(--green), var(--purple), var(--pink));
+            box-shadow: 0 18px 34px rgba(0,229,255,0.35);
             border-color: transparent;
         }
 
         .saudacao {
-            background: rgba(255,255,255,0.07);
+            background:
+                linear-gradient(145deg, rgba(255,255,255,0.14), rgba(255,255,255,0.055)),
+                linear-gradient(120deg, rgba(0,229,255,0.08), rgba(236,72,153,0.07), rgba(250,204,21,0.045));
             backdrop-filter: blur(20px);
-            border-radius: 28px;
+            border-radius: 30px;
             padding: 30px 35px;
             margin-bottom: 32px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.12);
+            border: 1px solid var(--border);
             animation: fadeSlideUp 1s ease 0.3s forwards;
             opacity: 0;
         }
@@ -162,44 +283,45 @@
         }
 
         .saudacao h2 {
-            color: #00b4d8;
+            color: var(--cyan);
             margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 1.8rem;
         }
 
-        .saudacao p { margin-bottom: 14px; color: rgba(255,255,255,0.8); }
-        .saudacao ul { margin-left: 20px; margin-bottom: 20px; color: rgba(255,255,255,0.7); }
+        .saudacao p { margin-bottom: 14px; color: var(--white-soft); }
+        .saudacao ul { margin-left: 20px; margin-bottom: 20px; color: rgba(255,255,255,0.72); }
         .saudacao ul li { margin-bottom: 6px; }
+
         .saudacao .destaque {
-            background: rgba(0,180,216,0.08);
+            background: linear-gradient(145deg, rgba(0,229,255,0.15), rgba(34,197,94,0.10), rgba(236,72,153,0.12));
             padding: 20px;
-            border-radius: 20px;
-            border-left: 6px solid #00b4d8;
+            border-radius: 22px;
+            border-left: 6px solid var(--cyan);
             margin-top: 20px;
         }
 
         .trimestre {
-            background: rgba(255,255,255,0.07);
+            background: linear-gradient(145deg, rgba(255,255,255,0.105), rgba(255,255,255,0.04));
             backdrop-filter: blur(20px);
-            border-radius: 28px;
+            border-radius: 30px;
             margin-bottom: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.12);
+            border: 1px solid var(--border);
             overflow: hidden;
             transition: box-shadow 0.4s ease, transform 0.3s ease;
         }
 
         .trimestre:hover {
-            box-shadow: 0 30px 60px rgba(0,180,216,0.2), inset 0 1px 0 rgba(255,255,255,0.15);
+            box-shadow: 0 30px 66px rgba(0,229,255,0.16), inset 0 1px 0 rgba(255,255,255,0.16);
             transform: translateY(-2px);
         }
 
         .trimestre-header {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.055);
             padding: 22px 30px;
             cursor: pointer;
             display: flex;
@@ -208,12 +330,12 @@
             transition: background 0.3s ease;
         }
 
-        .trimestre-header:hover { background: rgba(255,255,255,0.1); }
+        .trimestre-header:hover { background: rgba(255,255,255,0.095); }
 
         .trimestre-header h2 {
             color: #fff;
             font-size: 1.6rem;
-            font-weight: 600;
+            font-weight: 700;
             display: flex;
             align-items: center;
             gap: 16px;
@@ -222,34 +344,35 @@
         }
 
         .trimestre-header .badge {
-            background: linear-gradient(145deg, #00b4d8, #0077b6);
+            background: linear-gradient(145deg, var(--cyan), var(--green), var(--purple), var(--pink));
             color: #fff;
             padding: 6px 18px;
             border-radius: 40px;
             font-size: 0.9rem;
-            font-weight: 500;
-            box-shadow: 0 6px 16px rgba(0,180,216,0.4);
+            font-weight: 700;
+            box-shadow: 0 8px 18px rgba(0,229,255,0.28);
         }
 
         .toggle-icon {
             font-size: 1.2rem;
-            color: #00b4d8;
+            color: var(--cyan);
             transition: transform 0.4s ease, background 0.3s ease;
-            background: rgba(0,180,216,0.1);
-            width: 44px; height: 44px;
+            background: rgba(0,229,255,0.11);
+            width: 44px;
+            height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            border: 1px solid rgba(0,180,216,0.2);
+            border: 1px solid rgba(0,229,255,0.22);
             flex-shrink: 0;
         }
 
         .trimestre-header.open .toggle-icon {
             transform: rotate(180deg);
-            background: linear-gradient(145deg, #00b4d8, #0077b6);
+            background: linear-gradient(145deg, var(--cyan), var(--green), var(--purple), var(--pink));
             color: #fff;
-            box-shadow: 0 8px 20px rgba(0,180,216,0.4);
+            box-shadow: 0 8px 20px rgba(0,229,255,0.34);
         }
 
         .trimestre-conteudo {
@@ -266,14 +389,14 @@
         }
 
         .tema-trimestre {
-            color: rgba(255,255,255,0.85);
+            color: rgba(255,255,255,0.88);
             font-size: 1.05rem;
             margin: 24px 0 20px;
             padding: 14px 20px;
-            background: rgba(0,180,216,0.08);
+            background: linear-gradient(90deg, rgba(0,229,255,0.15), rgba(250,204,21,0.10), rgba(236,72,153,0.12));
             border-radius: 40px;
-            border-left: 6px solid #00b4d8;
-            font-weight: 500;
+            border-left: 6px solid var(--cyan);
+            font-weight: 600;
         }
 
         .capa-revista { text-align: center; margin: 20px 0 30px; }
@@ -281,18 +404,18 @@
             width: 100%;
             max-width: 1200px;
             height: auto;
-            border-radius: 20px;
+            border-radius: 22px;
             box-shadow: 0 24px 50px rgba(0,0,0,0.5);
             border: 2px solid rgba(255,255,255,0.15);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
         .capa-revista img:hover {
             transform: scale(1.02);
-            box-shadow: 0 32px 60px rgba(0,180,216,0.3);
+            box-shadow: 0 34px 70px rgba(139,92,246,0.28);
         }
 
         .descricao-detalhada {
-            background: rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.065);
             backdrop-filter: blur(10px);
             border-radius: 24px;
             padding: 28px;
@@ -304,7 +427,7 @@
         }
 
         .video-trimestre {
-            background: rgba(255,255,255,0.06);
+            background: rgba(255,255,255,0.065);
             backdrop-filter: blur(10px);
             border-radius: 28px;
             padding: 28px;
@@ -314,25 +437,25 @@
         }
 
         .video-trimestre h3 {
-            color: #00b4d8;
+            color: var(--cyan);
             font-size: 1.3rem;
             margin-bottom: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 12px;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .video-universal-container {
             width: 100%;
             max-width: 300px;
             margin: 0 auto;
-            border-radius: 20px;
+            border-radius: 22px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.45);
             background: #000;
-            border: 1px solid rgba(0,180,216,0.3);
+            border: 1px solid rgba(0,229,255,0.35);
         }
 
         .video-responsive-wrapper {
@@ -344,8 +467,10 @@
 
         .video-responsive-wrapper iframe {
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             border: none;
         }
 
@@ -358,20 +483,20 @@
 
         .video-direct-link {
             display: inline-block;
-            background: linear-gradient(145deg, #00b4d8, #0077b6);
+            background: linear-gradient(145deg, var(--pink), var(--orange), var(--purple));
             color: #fff;
             padding: 12px 28px;
             border-radius: 40px;
             text-decoration: none;
-            font-weight: 600;
+            font-weight: 700;
             margin-top: 16px;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0,180,216,0.4);
+            box-shadow: 0 8px 20px rgba(236,72,153,0.3);
         }
 
         .video-direct-link:hover {
             transform: translateY(-3px);
-            box-shadow: 0 16px 30px rgba(0,180,216,0.6);
+            box-shadow: 0 16px 30px rgba(236,72,153,0.45);
         }
 
         .licoes-grid {
@@ -381,11 +506,13 @@
         }
 
         .licao-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.04));
-            border-radius: 24px;
+            background:
+                linear-gradient(145deg, rgba(255,255,255,0.16), rgba(255,255,255,0.055)),
+                linear-gradient(135deg, rgba(0,229,255,0.08), rgba(250,204,21,0.05), rgba(236,72,153,0.08));
+            border-radius: 26px;
             padding: 24px;
             backdrop-filter: blur(15px);
-            border: 1px solid rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.13);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             display: flex;
@@ -398,7 +525,7 @@
             position: absolute;
             width: 180%;
             height: 180%;
-            background: radial-gradient(circle, rgba(0,180,216,0.12) 0%, transparent 65%);
+            background: radial-gradient(circle, rgba(0,229,255,0.13) 0%, transparent 65%);
             top: -40%;
             left: -40%;
             transition: 0.6s ease;
@@ -407,8 +534,8 @@
 
         .licao-card:hover {
             transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 24px 50px rgba(0,180,216,0.35);
-            border-color: rgba(0,180,216,0.4);
+            box-shadow: 0 26px 54px rgba(0,229,255,0.25);
+            border-color: rgba(0,229,255,0.4);
         }
 
         .licao-card:hover::before {
@@ -416,64 +543,92 @@
             left: -20%;
         }
 
+        .licao-card.blocked-card {
+            border-color: rgba(239,68,68,0.35);
+            background: linear-gradient(145deg, rgba(239,68,68,0.13), rgba(255,255,255,0.035));
+        }
+
         .licao-card .numero {
             position: absolute;
-            top: 16px; right: 16px;
-            background: linear-gradient(145deg, rgba(0,180,216,0.25), rgba(0,119,182,0.2));
-            color: #00b4d8;
-            width: 44px; height: 44px;
-            border-radius: 50%;
+            top: 16px;
+            right: 16px;
+            background: linear-gradient(145deg, rgba(0,229,255,0.24), rgba(139,92,246,0.22));
+            color: #e0fbff;
+            width: 46px;
+            height: 46px;
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
+            font-weight: 800;
             font-size: 1.1rem;
-            border: 1px solid rgba(0,180,216,0.3);
+            border: 1px solid rgba(0,229,255,0.28);
+            z-index: 1;
         }
 
         .licao-card h3 {
             color: #fff;
             margin-bottom: 12px;
             font-size: 1.05rem;
-            font-weight: 600;
-            padding-right: 50px;
+            font-weight: 700;
+            padding-right: 54px;
             flex-grow: 1;
             line-height: 1.5;
+            position: relative;
+            z-index: 1;
         }
 
         .licao-card .data {
-            color: rgba(255,255,255,0.5);
+            color: rgba(255,255,255,0.56);
             font-size: 0.88rem;
             margin-bottom: 14px;
             display: flex;
             align-items: center;
             gap: 8px;
-            font-weight: 500;
+            font-weight: 600;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
 
         .release-date {
-            color: #00b4d8;
+            color: #a5f3fc;
             font-size: 0.8rem;
-            background: rgba(0,180,216,0.1);
+            background: rgba(0,229,255,0.1);
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-left: 8px;
+        }
+
+        .blocked-note {
+            color: #fecaca;
+            font-size: 0.8rem;
+            background: rgba(239,68,68,0.13);
+            border: 1px solid rgba(239,68,68,0.25);
             padding: 2px 8px;
             border-radius: 20px;
             margin-left: 8px;
         }
 
         .progress-bar {
-            height: 5px;
+            height: 6px;
             background: rgba(255,255,255,0.1);
             border-radius: 10px;
             margin-bottom: 16px;
             overflow: hidden;
+            position: relative;
+            z-index: 1;
         }
 
         .progress {
             height: 100%;
-            background: linear-gradient(90deg, #00b4d8, #0077b6);
+            background: linear-gradient(90deg, var(--cyan), var(--green), var(--yellow), var(--pink), var(--purple));
             border-radius: 10px;
             transition: width 0.8s ease;
+        }
+
+        .progress.blocked-progress {
+            background: linear-gradient(90deg, var(--red), #f97316);
         }
 
         .btn-quiz {
@@ -481,12 +636,12 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            background: linear-gradient(145deg, #00b4d8, #0077b6);
+            background: linear-gradient(145deg, var(--cyan), var(--green), var(--blue));
             color: #fff;
             text-decoration: none;
             padding: 13px 24px;
             border-radius: 40px;
-            font-weight: 600;
+            font-weight: 800;
             text-align: center;
             transition: all 0.3s ease;
             border: none;
@@ -494,15 +649,15 @@
             width: 100%;
             font-size: 0.95rem;
             margin-top: auto;
-            box-shadow: 0 8px 20px rgba(0,180,216,0.35);
+            box-shadow: 0 8px 20px rgba(0,229,255,0.28);
             position: relative;
             z-index: 1;
         }
 
         .btn-quiz:hover {
-            background: linear-gradient(145deg, #0096c7, #005f8e);
+            background: linear-gradient(145deg, var(--pink), var(--orange), var(--purple));
             transform: translateY(-2px);
-            box-shadow: 0 16px 30px rgba(0,180,216,0.5);
+            box-shadow: 0 16px 30px rgba(236,72,153,0.35);
         }
 
         .btn-quiz.disabled {
@@ -514,54 +669,56 @@
             border: 1px solid rgba(255,255,255,0.1);
         }
 
+        .btn-quiz.blocked {
+            background: rgba(239,68,68,0.12);
+            color: #fecaca;
+            box-shadow: none;
+            cursor: not-allowed;
+            pointer-events: none;
+            border: 1px solid rgba(239,68,68,0.26);
+        }
+
         .status {
             display: inline-block;
             padding: 4px 12px;
             border-radius: 30px;
             font-size: 0.78rem;
-            font-weight: 600;
+            font-weight: 800;
         }
 
         .status.ativa {
-            background: rgba(0,255,150,0.15);
-            color: #4ade80;
-            border: 1px solid rgba(74,222,128,0.3);
+            background: rgba(34,197,94,0.16);
+            color: #86efac;
+            border: 1px solid rgba(134,239,172,0.28);
         }
 
         .status.breve {
-            background: rgba(0,180,216,0.15);
-            color: #00b4d8;
-            border: 1px solid rgba(0,180,216,0.3);
+            background: rgba(0,229,255,0.13);
+            color: #a5f3fc;
+            border: 1px solid rgba(0,229,255,0.24);
         }
 
-        .placeholder-message {
-            text-align: center;
-            padding: 48px 24px;
-            background: rgba(255,255,255,0.04);
-            border-radius: 32px;
-            border: 2px dashed rgba(0,180,216,0.3);
-            color: rgba(255,255,255,0.6);
-        }
-
-        .placeholder-message i {
-            font-size: 3.2rem;
-            color: #00b4d8;
-            margin-bottom: 16px;
-            opacity: 0.6;
-            display: block;
+        .status.bloqueada {
+            background: rgba(239,68,68,0.16);
+            color: #fecaca;
+            border: 1px solid rgba(239,68,68,0.28);
         }
 
         footer {
             text-align: center;
             padding: 30px;
-            color: rgba(255,255,255,0.4);
+            color: rgba(255,255,255,0.45);
             margin-top: 40px;
-            font-weight: 500;
+            font-weight: 600;
         }
 
         @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
+            body { padding: 14px; }
             .logo-img { max-width: 110px; }
+            header { padding: 2.3rem 1.25rem; border-radius: 28px; }
+            .subtitle strong { margin-left: 0; margin-top: 8px; }
+            .saudacao { padding: 24px 20px; }
+            .saudacao h2 { font-size: 1.45rem; align-items: flex-start; }
             .trimestre-header { padding: 18px 22px; }
             .trimestre-header h2 { font-size: 1.3rem; gap: 10px; }
             .trimestre-conteudo.open { padding: 0 18px 22px; }
@@ -577,18 +734,28 @@
     <div class="container">
         <header>
             <img src="https://i.imgur.com/vsNu5IC.png" alt="Logo EBD" class="logo-img" id="logoImg">
-            <h1>Quizzes da EBD Fiel</h1>
-            <p class="subtitle">Quizzes Interativos <strong>Classe Jovens</strong></p>
-            <p style="color: rgba(255,255,255,0.55); margin-top: 16px;">Teste seu conhecimento com os quizzes das lições da EBD</p>
+            <div class="eyebrow"><i class="fas fa-bolt"></i> Jovens conectados na Palavra</div>
+            <h1><span class="gradient-text">Quizzes da EBD Fiel</span></h1>
+            <div style="margin-bottom:18px; position:relative; z-index:1;">
+                <img src="https://i.imgur.com/SAWFwQE.png" alt="Classe Jovens" style="max-width:260px; width:100%; height:auto; display:block; margin:0 auto; filter:drop-shadow(0 8px 24px rgba(0,229,255,0.35));">
+            </div>
+            <p class="hero-note">Teste seu conhecimento, revise as lições e avance no estudo bíblico com mais leveza.</p>
+
+            
 
             <div class="redes-sociais">
                 <h3>Siga a EBD Fiel nas redes sociais:</h3>
                 <div class="social-icons">
-                    <a href="https://www.instagram.com/ebdfiel/" class="social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/EBDFiel/" class="social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.youtube.com/@EBDFiel" class="social-icon" target="_blank"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.tiktok.com/@ebdfiel" class="social-icon" target="_blank"><i class="fab fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/ebdfiel/" class="social-icon" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/EBDFiel/" class="social-icon" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@EBDFiel" class="social-icon" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@ebdfiel" class="social-icon" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
                 </div>
+            </div>
+        <div class="hero-pills">
+                <span class="hero-pill">⚡ Novos quizzes toda semana</span>
+                <span class="hero-pill">🎯 Desafie seu conhecimento</span>
+                <span class="hero-pill">🧠 Aprenda de forma interativa</span>
             </div>
         </header>
 
@@ -597,24 +764,23 @@
             <p>Esta página foi criada para ajudar no estudo e fixação das lições da EBD Betel, com foco especial na classe de Jovens.</p>
             <p><strong>Objetivo dos Quizzes:</strong></p>
             <ul>
-                <li><strong>Reforçar o aprendizado:</strong> Testar o conhecimento adquirido em cada lição</li>
-                <li><strong>Preparar para as aulas:</strong> Revisar os principais conceitos antes da aula dominical</li>
-                <li><strong>Avaliar o entendimento:</strong> Identificar pontos que precisam de mais atenção</li>
-                <li><strong>Tornar o estudo interativo:</strong> Transformar o estudo bíblico em uma experiência dinâmica</li>
-                <li><strong>Facilitar o ensino:</strong> Professores podem usar os quizzes para preparar suas aulas</li>
+                <li><strong>Reforçar o aprendizado:</strong> testar o conhecimento adquirido em cada lição</li>
+                <li><strong>Preparar para as aulas:</strong> revisar os principais conceitos antes da aula dominical</li>
+                <li><strong>Avaliar o entendimento:</strong> identificar pontos que precisam de mais atenção</li>
+                <li><strong>Tornar o estudo interativo:</strong> transformar o estudo bíblico em uma experiência dinâmica</li>
+                <li><strong>Facilitar o ensino:</strong> professores podem usar os quizzes para preparar suas aulas</li>
             </ul>
             <div class="destaque">
                 <p><strong>📝 Como usar esta plataforma:</strong></p>
                 <p>1. Clique no trimestre desejado para expandir as lições.</p>
                 <p>2. Escolha a lição e clique em "Iniciar Quiz".</p>
                 <p>3. Responda as questões e revise seus erros.</p>
-                <p><strong>⚠️ Liberação de lições:</strong> As lições serão liberadas automaticamente às sextas-feiras que antecedem o domingo de cada aula. Clique 5 vezes no logo para abrir o painel de administração e liberar uma lição antecipadamente (funciona para todos os trimestres).</p>
+                <p><strong>⚠️ Liberação de lições:</strong> As lições serão liberadas automaticamente às sextas-feiras que antecedem o domingo de cada aula. Clique 5 vezes no logo para abrir o painel de administração e liberar, bloquear ou resetar uma lição.</p>
             </div>
             <p style="margin-top:14px;">Que Deus abençoe seu estudo!</p>
         </div>
 
         <main>
-            <!-- Os trimestres serão gerados dinamicamente pelo JavaScript -->
             <div id="trimestres-container"></div>
         </main>
 
@@ -634,12 +800,12 @@
                 tema: "As Bem-Aventuranças do Reino de Deus",
                 capa: "https://i.imgur.com/wlofmVE.png",
                 descricao: `<p>Para iniciar o primeiro trimestre do ano com as muitas bênçãos da vida cristã, a Revista Conectar + Jovens traz como tema o mais notório discurso de Jesus: o Sermão da Montanha, registrado em Mateus 5.5-7.</p>
-                            <p>As beatitudes, ou bem-aventuranças, proferidas pelo Mestre do alto de um monte para os Seus discípulos e a multidão que O seguia, nos ensinam que a felicidade do cristão não está nos padrões estabelecidos por este mundo, mas nos padrões que regem o Reino de Deus...</p>
+                            <p>As beatitudes, ou bem-aventuranças, proferidas pelo Mestre do alto de um monte para os Seus discípulos e a multidão que O seguia, nos ensinam que a felicidade do cristão não está nos padrões estabelecidos por este mundo, mas nos padrões que regem o Reino de Deus.</p>
                             <p>Que o seu ministério seja repleto das beatitudes do Reino!</p>`,
                 videoId: "bFRykKpUv2c",
                 videoTitle: "As Bem-Aventuranças",
                 lessons: [
-                    { num: 1, title: "As Beatitudes do Reino de Deus", date: "04/01/2026", releaseDate: new Date(2026, 0, 2) },   // sexta 02/01
+                    { num: 1, title: "As Beatitudes do Reino de Deus", date: "04/01/2026", releaseDate: new Date(2026, 0, 2) },
                     { num: 2, title: "Bem-Aventurados em Cristo", date: "11/01/2026", releaseDate: new Date(2026, 0, 9) },
                     { num: 3, title: "Bem-Aventurados os pobres de espírito", date: "18/01/2026", releaseDate: new Date(2026, 0, 16) },
                     { num: 4, title: "Bem-Aventurados os que choram por seus pecados", date: "25/01/2026", releaseDate: new Date(2026, 0, 23) },
@@ -661,9 +827,9 @@
                 tema: "Mordomia Cristã: vivendo para a Glória de Deus",
                 capa: "https://i.imgur.com/rnntuWl.png",
                 descricao: `<p>Neste trimestre, a Revista Conectar + Jovens traz um tema importante para os que são chamados a viver o Evangelho com obediência e responsabilidade: Mordomia Cristã: vivendo para a Glória de Deus.</p>
-                            <p>Para uma abordagem eficaz, selecionamos duas características principais dos despenseiros fiéis de Cristo: obediência a Deus e à Sua Palavra; responsabilidade com Ele acima de tudo, conosco e com o próximo...</p>
-                            <p><strong>Observação:</strong> As lições serão liberadas automaticamente às sextas-feiras que antecedem o domingo de cada aula. Clique 5 vezes no logo para abrir o painel de administração e liberar uma lição antecipadamente.</p>`,
-                videoId: "bFRykKpUv2c",
+                            <p>Para uma abordagem eficaz, selecionamos duas características principais dos despenseiros fiéis de Cristo: obediência a Deus e à Sua Palavra; responsabilidade com Ele acima de tudo, conosco e com o próximo.</p>
+                            <p><strong>Observação:</strong> As lições serão liberadas automaticamente às sextas-feiras que antecedem o domingo de cada aula. O painel de administração permite liberar ou bloquear lições manualmente.</p>`,
+                videoId: "uCCysCorUok",
                 videoTitle: "Mordomia Cristã",
                 lessons: [
                     { num: 1, title: "O chamado que transforma a dor em propósito", date: "05/04/2026", releaseDate: new Date(2026, 3, 3) },
@@ -687,8 +853,8 @@
                 badge: "Jul-Set",
                 tema: "Livros Poéticos: Teologia Sapiencial da Poesia Hebraica",
                 capa: "https://i.imgur.com/placeholder.png",
-                descricao: `<p>Neste trimestre, mergulharemos na rica literatura poética do Antigo Testamento: Jó, Salmos, Provérbios, Eclesiastes e Cantares de Salomão. A teologia sapiencial nos ensina sobre a sabedoria divina, o temor do Senhor e a arte de viver uma vida que agrada a Deus em meio às complexidades humanas.</p>
-                            <p>Estudaremos como a poesia hebraica expressa os sentimentos mais profundos da alma, desde o lamento até a adoração, e como esses livros continuam a falar aos jovens de hoje, oferecendo direção, consolo e entendimento para os desafios diários.</p>`,
+                descricao: `<p>Neste trimestre, mergulharemos na rica literatura poética do Antigo Testamento: Jó, Salmos, Provérbios, Eclesiastes e Cantares de Salomão. A teologia sapiencial nos ensina sobre a sabedoria divina, o temor do Senhor e a arte de viver uma vida que agrada a Deus.</p>
+                            <p>Estudaremos como a poesia hebraica expressa os sentimentos mais profundos da alma, desde o lamento até a adoração, e como esses livros continuam a falar aos jovens de hoje.</p>`,
                 videoId: "bFRykKpUv2c",
                 videoTitle: "Sabedoria Hebraica",
                 lessons: [
@@ -713,8 +879,8 @@
                 badge: "Out-Dez",
                 tema: "A tecnologia e a Bíblia: Aliadas ou rivais?",
                 capa: "https://i.imgur.com/placeholder.png",
-                descricao: `<p>Em um mundo cada vez mais conectado, a tecnologia se tornou parte indispensável da vida dos jovens. Neste trimestre, refletiremos sobre como a revolução digital impacta a fé, a ética e os relacionamentos, respondendo à pergunta: tecnologia e Bíblia podem caminhar juntas?</p>
-                            <p>Analisaremos as oportunidades que a tecnologia oferece para o avanço do evangelho, os cuidados que devemos ter com o uso excessivo e a influência de valores contrários ao Reino, sempre tendo a Palavra de Deus como filtro e guia.</p>`,
+                descricao: `<p>Em um mundo cada vez mais conectado, a tecnologia se tornou parte indispensável da vida dos jovens. Neste trimestre, refletiremos sobre como a revolução digital impacta a fé, a ética e os relacionamentos.</p>
+                            <p>Analisaremos as oportunidades que a tecnologia oferece para o avanço do evangelho, os cuidados com o uso excessivo e a influência de valores contrários ao Reino.</p>`,
                 videoId: "bFRykKpUv2c",
                 videoTitle: "Fé na Era Digital",
                 lessons: [
@@ -743,15 +909,63 @@
             return `${day}/${month}/${year}`;
         }
 
-        function isLessonAvailable(trimestreNum, lessonNum, releaseDate) {
+        function getLessonKeys(trimestreNum, lessonNum) {
+            return {
+                forceKey: `force_trimestre${trimestreNum}_lesson${lessonNum}`,
+                blockKey: `block_trimestre${trimestreNum}_lesson${lessonNum}`
+            };
+        }
+
+        function getLessonStatus(trimestreNum, lessonNum, releaseDate) {
             const today = new Date();
             today.setHours(0, 0, 0, 0);
-            // Verifica se há força no localStorage para este trimestre e lição
-            const forcedKey = `force_trimestre${trimestreNum}_lesson${lessonNum}`;
-            const forced = localStorage.getItem(forcedKey);
-            if (forced === 'true') return true;
-            // Caso contrário, compara com a data de liberação
-            return today >= releaseDate;
+
+            const { forceKey, blockKey } = getLessonKeys(trimestreNum, lessonNum);
+            const forced = localStorage.getItem(forceKey) === 'true';
+            const blocked = localStorage.getItem(blockKey) === 'true';
+
+            if (blocked) {
+                return {
+                    available: false,
+                    blocked: true,
+                    forced: false,
+                    statusText: 'Bloqueada',
+                    buttonText: '<i class="fas fa-lock"></i> Bloqueado',
+                    statusClass: 'bloqueada'
+                };
+            }
+
+            if (forced) {
+                return {
+                    available: true,
+                    blocked: false,
+                    forced: true,
+                    statusText: 'Liberada',
+                    buttonText: '<i class="fas fa-play-circle"></i> Iniciar Quiz',
+                    statusClass: 'ativa'
+                };
+            }
+
+            const automaticallyAvailable = today >= releaseDate;
+
+            return {
+                available: automaticallyAvailable,
+                blocked: false,
+                forced: false,
+                statusText: automaticallyAvailable ? 'Disponível' : 'Em preparação',
+                buttonText: automaticallyAvailable ? '<i class="fas fa-play-circle"></i> Iniciar Quiz' : '<i class="fas fa-clock"></i> Em preparação',
+                statusClass: automaticallyAvailable ? 'ativa' : 'breve'
+            };
+        }
+
+        function isLessonAvailable(trimestreNum, lessonNum, releaseDate) {
+            return getLessonStatus(trimestreNum, lessonNum, releaseDate).available;
+        }
+
+        function refreshOpenAccordionsHeight() {
+            document.querySelectorAll('.trimestre-conteudo.open').forEach(conteudo => {
+                conteudo.style.maxHeight = conteudo.scrollHeight + 'px';
+            });
         }
 
         // ==================== GERAR HTML DOS TRIMESTRES ====================
@@ -760,11 +974,9 @@
             container.innerHTML = '';
 
             trimestres.forEach(trim => {
-                // Cria estrutura do trimestre
                 const trimestreDiv = document.createElement('div');
                 trimestreDiv.className = 'trimestre';
 
-                // Cabeçalho
                 const headerDiv = document.createElement('div');
                 headerDiv.className = 'trimestre-header';
                 headerDiv.innerHTML = `
@@ -772,11 +984,8 @@
                     <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
                 `;
 
-                // Conteúdo
                 const conteudoDiv = document.createElement('div');
                 conteudoDiv.className = 'trimestre-conteudo';
-
-                // Tema, capa, descrição
                 conteudoDiv.innerHTML = `
                     <div class="tema-trimestre"><strong>Tema:</strong> ${trim.tema}</div>
                     <div class="capa-revista"><img src="${trim.capa}" alt="Capa ${trim.titulo}"></div>
@@ -799,24 +1008,41 @@
                 trimestreDiv.appendChild(conteudoDiv);
                 container.appendChild(trimestreDiv);
 
-                // Gerar cards das lições
-                const gridContainer = conteudoDiv.querySelector(`.licoes-grid`);
+                const gridContainer = conteudoDiv.querySelector('.licoes-grid');
                 trim.lessons.forEach(lesson => {
-                    const available = isLessonAvailable(trim.numero, lesson.num, lesson.releaseDate);
+                    const status = getLessonStatus(trim.numero, lesson.num, lesson.releaseDate);
                     const releaseDateStr = formatDate(lesson.releaseDate);
+                    const link = `trimestre-${trim.numero.toString().padStart(2, '0')}/licao-${lesson.num.toString().padStart(2, '0')}/index.html`;
                     const card = document.createElement('div');
-                    card.className = 'licao-card';
+                    card.className = `licao-card ${status.blocked ? 'blocked-card' : ''}`;
+
+                    const releaseInfo = !status.available && !status.blocked
+                        ? `<span class="release-date">📆 Disponível a partir de ${releaseDateStr}</span>`
+                        : '';
+
+                    const blockedInfo = status.blocked
+                        ? `<span class="blocked-note">🔒 Bloqueio manual ativo</span>`
+                        : '';
+
+                    const forcedInfo = status.forced
+                        ? `<span class="release-date">⚡ Liberação manual</span>`
+                        : '';
+
+                    const buttonClass = status.blocked ? 'blocked' : (!status.available ? 'disabled' : '');
+
                     card.innerHTML = `
                         <div class="numero">${lesson.num.toString().padStart(2, '0')}</div>
                         <h3>${lesson.title}</h3>
                         <div class="data">
                             <span>📅</span> ${lesson.date}
-                            <span class="status ${available ? 'ativa' : 'breve'}">${available ? 'Disponível' : 'Em preparação'}</span>
-                            <span class="release-date" style="${available ? 'display:none' : 'display:inline-block'}">📆 Disponível a partir de ${releaseDateStr}</span>
+                            <span class="status ${status.statusClass}">${status.statusText}</span>
+                            ${releaseInfo}
+                            ${blockedInfo}
+                            ${forcedInfo}
                         </div>
-                        <div class="progress-bar"><div class="progress" style="width:${available ? '100%' : '0%'}"></div></div>
-                        <a href="${available ? `trimestre-${trim.numero.toString().padStart(2, '0')}/licao-${lesson.num.toString().padStart(2, '0')}/index.html` : '#'}" class="btn-quiz ${!available ? 'disabled' : ''}" target="_blank">
-                            ${available ? '<i class="fas fa-play-circle"></i> Iniciar Quiz' : '<i class="fas fa-clock"></i> Em preparação'}
+                        <div class="progress-bar"><div class="progress ${status.blocked ? 'blocked-progress' : ''}" style="width:${status.available ? '100%' : (status.blocked ? '100%' : '0%')}"></div></div>
+                        <a href="${status.available ? link : '#'}" class="btn-quiz ${buttonClass}" target="_blank">
+                            ${status.buttonText}
                         </a>
                     `;
                     gridContainer.appendChild(card);
@@ -824,7 +1050,7 @@
             });
         }
 
-        // ==================== PAINEL ADMIN (5 cliques) ====================
+        // ==================== PAINEL ADMIN (5 CLIQUES NO LOGO) ====================
         let logoClickCount = 0;
         const logo = document.getElementById('logoImg');
         const adminPanel = document.createElement('div');
@@ -832,36 +1058,40 @@
         adminPanel.style.position = 'fixed';
         adminPanel.style.bottom = '20px';
         adminPanel.style.right = '20px';
-        adminPanel.style.backgroundColor = 'rgba(0,0,0,0.9)';
-        adminPanel.style.backdropFilter = 'blur(10px)';
-        adminPanel.style.padding = '15px';
-        adminPanel.style.borderRadius = '20px';
+        adminPanel.style.background = 'linear-gradient(145deg, rgba(9,11,31,0.96), rgba(16,24,58,0.96))';
+        adminPanel.style.backdropFilter = 'blur(16px)';
+        adminPanel.style.padding = '16px';
+        adminPanel.style.borderRadius = '22px';
         adminPanel.style.zIndex = '9999';
-        adminPanel.style.border = '1px solid #00b4d8';
+        adminPanel.style.border = '1px solid rgba(0,229,255,0.45)';
+        adminPanel.style.boxShadow = '0 24px 60px rgba(0,0,0,0.55)';
         adminPanel.style.display = 'none';
         adminPanel.style.flexDirection = 'column';
         adminPanel.style.gap = '10px';
-        adminPanel.style.minWidth = '250px';
+        adminPanel.style.minWidth = '280px';
         adminPanel.innerHTML = `
-            <div style="display:flex; justify-content:space-between; align-items:center;">
-                <strong style="color:#00b4d8;">Liberar lição (todos os trimestres)</strong>
-                <button id="close-admin" style="background:none; border:none; color:white; cursor:pointer;">✕</button>
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
+                <strong style="color:#00e5ff; font-size:0.98rem;"><i class="fas fa-user-shield"></i> Painel admin</strong>
+                <button id="close-admin" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); color:white; cursor:pointer; width:32px; height:32px; border-radius:10px;">✕</button>
             </div>
-            <select id="trimestre-select" style="padding:8px; border-radius:8px; background:#1e2f4a; color:white;">
+            <small style="color:rgba(255,255,255,0.58); line-height:1.4;">Escolha uma lição para liberar, bloquear ou voltar ao modo automático.</small>
+            <select id="trimestre-select" style="padding:10px; border-radius:12px; background:#121a3f; color:white; border:1px solid rgba(255,255,255,0.14);">
                 <option value="1">1º Trimestre</option>
                 <option value="2">2º Trimestre</option>
                 <option value="3">3º Trimestre</option>
                 <option value="4">4º Trimestre</option>
             </select>
-            <select id="lesson-select" style="padding:8px; border-radius:8px; background:#1e2f4a; color:white;">
+            <select id="lesson-select" style="padding:10px; border-radius:12px; background:#121a3f; color:white; border:1px solid rgba(255,255,255,0.14);">
                 <option value="1">Lição 01</option><option value="2">Lição 02</option><option value="3">Lição 03</option>
                 <option value="4">Lição 04</option><option value="5">Lição 05</option><option value="6">Lição 06</option>
                 <option value="7">Lição 07</option><option value="8">Lição 08</option><option value="9">Lição 09</option>
                 <option value="10">Lição 10</option><option value="11">Lição 11</option><option value="12">Lição 12</option>
                 <option value="13">Lição 13</option>
             </select>
-            <button id="force-release" style="background:#00b4d8; color:#fff; border:none; padding:8px; border-radius:8px; cursor:pointer;">Liberar agora</button>
-            <button id="clear-all-forces" style="background:#555; color:white; border:none; padding:8px; border-radius:8px; cursor:pointer;">Limpar todas (reset)</button>
+            <button id="force-release" style="background:linear-gradient(145deg,#22c55e,#16a34a); color:#fff; border:none; padding:10px; border-radius:12px; cursor:pointer; font-weight:800;"><i class="fas fa-lock-open"></i> Liberar lição</button>
+            <button id="force-block" style="background:linear-gradient(145deg,#ef4444,#b91c1c); color:#fff; border:none; padding:10px; border-radius:12px; cursor:pointer; font-weight:800;"><i class="fas fa-lock"></i> Bloquear lição</button>
+            <button id="reset-selected" style="background:linear-gradient(145deg,#00e5ff,#2563eb); color:#fff; border:none; padding:10px; border-radius:12px; cursor:pointer; font-weight:800;"><i class="fas fa-rotate-left"></i> Voltar lição ao automático</button>
+            <button id="clear-all-forces" style="background:rgba(255,255,255,0.12); color:white; border:1px solid rgba(255,255,255,0.14); padding:10px; border-radius:12px; cursor:pointer; font-weight:700;">Limpar todas as alterações</button>
         `;
         document.body.appendChild(adminPanel);
 
@@ -883,67 +1113,103 @@
         document.getElementById('force-release')?.addEventListener('click', () => {
             const trimestre = document.getElementById('trimestre-select').value;
             const lesson = document.getElementById('lesson-select').value;
-            const key = `force_trimestre${trimestre}_lesson${lesson}`;
-            localStorage.setItem(key, 'true');
-            location.reload(); // recarrega para aplicar a liberação
+            const { forceKey, blockKey } = getLessonKeys(trimestre, lesson);
+
+            localStorage.setItem(forceKey, 'true');
+            localStorage.removeItem(blockKey);
+            location.reload();
+        });
+
+        document.getElementById('force-block')?.addEventListener('click', () => {
+            const trimestre = document.getElementById('trimestre-select').value;
+            const lesson = document.getElementById('lesson-select').value;
+            const { forceKey, blockKey } = getLessonKeys(trimestre, lesson);
+
+            localStorage.setItem(blockKey, 'true');
+            localStorage.removeItem(forceKey);
+            location.reload();
+        });
+
+        document.getElementById('reset-selected')?.addEventListener('click', () => {
+            const trimestre = document.getElementById('trimestre-select').value;
+            const lesson = document.getElementById('lesson-select').value;
+            const { forceKey, blockKey } = getLessonKeys(trimestre, lesson);
+
+            localStorage.removeItem(forceKey);
+            localStorage.removeItem(blockKey);
+            location.reload();
         });
 
         document.getElementById('clear-all-forces')?.addEventListener('click', () => {
-            // Remove todas as chaves de força
+            const keysToRemove = [];
+
             for (let i = 0; i < localStorage.length; i++) {
                 const key = localStorage.key(i);
-                if (key && key.startsWith('force_trimestre')) {
-                    localStorage.removeItem(key);
+                if (key && (key.startsWith('force_trimestre') || key.startsWith('block_trimestre'))) {
+                    keysToRemove.push(key);
                 }
             }
+
+            keysToRemove.forEach(key => localStorage.removeItem(key));
             location.reload();
         });
 
         // ==================== INICIALIZAÇÃO ====================
         gerarTrimestres();
 
-        // Accordion (após geração dinâmica)
+        // Accordion
         document.querySelectorAll('.trimestre-header').forEach(header => {
             header.addEventListener('click', function () {
                 const conteudo = this.nextElementSibling;
                 const isOpen = conteudo.classList.contains('open');
+
                 document.querySelectorAll('.trimestre-conteudo').forEach(c => {
                     c.style.maxHeight = null;
                     c.classList.remove('open');
                 });
                 document.querySelectorAll('.trimestre-header').forEach(h => h.classList.remove('open'));
+
                 if (!isOpen) {
                     conteudo.classList.add('open');
-                    conteudo.style.maxHeight = conteudo.scrollHeight + "px";
+                    conteudo.style.maxHeight = conteudo.scrollHeight + 'px';
                     this.classList.add('open');
                 }
             });
         });
 
+        window.addEventListener('resize', refreshOpenAccordionsHeight);
+
         // Partículas
-        const canvas = document.getElementById("particles");
-        const ctx = canvas.getContext("2d");
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+
         function resizeCanvas() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
+
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
-        const particles = Array.from({ length: 90 }, () => ({
+
+        const particles = Array.from({ length: 100 }, () => ({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            r: Math.random() * 1.8 + 0.3,
-            d: Math.random() * 0.6 + 0.2,
-            o: Math.random() * 0.4 + 0.1
+            r: Math.random() * 2.1 + 0.4,
+            d: Math.random() * 0.65 + 0.2,
+            o: Math.random() * 0.45 + 0.1,
+            hue: Math.random() > 0.5 ? '0, 229, 255' : '236, 72, 153'
         }));
+
         function drawParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             particles.forEach(p => {
                 ctx.beginPath();
                 ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(0, 180, 216, ${p.o})`;
+                ctx.fillStyle = `rgba(${p.hue}, ${p.o})`;
                 ctx.fill();
                 p.y += p.d;
+                p.x += Math.sin(p.y / 80) * 0.18;
+
                 if (p.y > canvas.height) {
                     p.y = 0;
                     p.x = Math.random() * canvas.width;
@@ -951,6 +1217,7 @@
             });
             requestAnimationFrame(drawParticles);
         }
+
         drawParticles();
     </script>
 </body>

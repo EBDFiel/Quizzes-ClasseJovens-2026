@@ -4,190 +4,1222 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- MINIATURA / PREVIEW -->
-    <meta property="og:title" content="Quizzes EBD Fiel - Jovens">
-    <meta property="og:description" content="Teste seu conhecimento bíblico com quizzes interativos.">
+    <!-- MINIATURA / PREVIEW PARA WHATSAPP, FACEBOOK, TELEGRAM E REDES SOCIAIS -->
+    <meta property="og:title" content="Quizzes EBD Fiel Jovens | Teste seu conhecimento bíblico">
+    <meta property="og:description" content="Participe dos quizzes da Classe Jovens, revise as lições da EBD e cresça na fé de forma interativa.">
     <meta property="og:image" content="https://i.imgur.com/nP5W1wP.png">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
 
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Quizzes EBD Fiel Jovens | Teste seu conhecimento bíblico">
+    <meta name="twitter:description" content="Revise as lições, desafie seu conhecimento e cresça na fé com os quizzes da EBD Fiel.">
     <meta name="twitter:image" content="https://i.imgur.com/nP5W1wP.png">
 
     <title>Quizzes da EBD Fiel - Classe Jovens</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Mantive seu estilo já atualizado */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-dark: #07051f;
+            --bg-mid: #17113d;
+            --cyan: #00e5ff;
+            --blue: #2563eb;
+            --purple: #8b5cf6;
+            --pink: #ec4899;
+            --orange: #fb923c;
+            --green: #22c55e;
+            --yellow: #facc15;
+            --red: #ef4444;
+            --white-soft: rgba(255,255,255,0.86);
+            --white-muted: rgba(255,255,255,0.64);
+            --glass: rgba(255,255,255,0.11);
+            --glass-strong: rgba(255,255,255,0.18);
+            --border: rgba(255,255,255,0.2);
+        }
+
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #07051f, #17113d);
-            color: white;
+            line-height: 1.6;
+            background:
+                radial-gradient(circle at 8% 8%, rgba(236,72,153,0.48), transparent 28%),
+                radial-gradient(circle at 88% 8%, rgba(0,229,255,0.42), transparent 30%),
+                radial-gradient(circle at 20% 86%, rgba(250,204,21,0.26), transparent 26%),
+                radial-gradient(circle at 78% 82%, rgba(34,197,94,0.24), transparent 28%),
+                radial-gradient(circle at 50% 48%, rgba(139,92,246,0.42), transparent 38%),
+                linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-mid) 46%, #071a38 100%);
+            min-height: 100vh;
             padding: 20px;
+            color: #eaf6ff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+            background-size: 42px 42px;
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,0.85), transparent 82%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        #particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
         }
 
         .container {
             max-width: 1100px;
-            margin: auto;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
 
         header {
             text-align: center;
-            margin-bottom: 30px;
+            padding: 3rem 2rem;
+            background:
+                linear-gradient(145deg, rgba(255,255,255,0.17), rgba(255,255,255,0.06)),
+                linear-gradient(120deg, rgba(0,229,255,0.16), rgba(236,72,153,0.12), rgba(250,204,21,0.08));
+            backdrop-filter: blur(24px);
+            border-radius: 34px;
+            margin-bottom: 24px;
+            box-shadow: 0 28px 75px rgba(0,0,0,0.42), 0 0 42px rgba(0,229,255,0.12), inset 0 1px 0 rgba(255,255,255,0.22);
+            border: 1px solid var(--border);
+            animation: fadeSlideDown 1s ease forwards;
+            opacity: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            width: 360px;
+            height: 360px;
+            background: conic-gradient(from 180deg, var(--cyan), var(--green), var(--yellow), var(--pink), var(--purple), var(--cyan));
+            filter: blur(60px);
+            opacity: 0.2;
+            top: -180px;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
+
+        @keyframes fadeSlideDown {
+            from { opacity: 0; transform: translateY(-40px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         .logo-img {
-            width: 120px;
+            max-width: 140px;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px auto;
+            filter: drop-shadow(0 10px 28px rgba(0,229,255,0.42));
+            animation: logoPulse 3s ease-in-out infinite;
             cursor: pointer;
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { filter: drop-shadow(0 10px 28px rgba(0,229,255,0.36)); transform: scale(1); }
+            50% { filter: drop-shadow(0 14px 40px rgba(236,72,153,0.52)); transform: scale(1.035); }
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background: rgba(0,229,255,0.13);
+            border: 1px solid rgba(0,229,255,0.28);
+            color: #baf8ff;
+            font-size: 0.86rem;
+            font-weight: 800;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: clamp(2.1rem, 5vw, 3.4rem);
+            font-weight: 800;
+            letter-spacing: -0.055em;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 26px rgba(0,229,255,0.38);
+            position: relative;
+            z-index: 1;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #fff, var(--cyan), var(--yellow), var(--pink), var(--purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .classe-img-wrap {
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .classe-img-wrap img {
+            max-width: 260px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            filter: drop-shadow(0 8px 24px rgba(0,229,255,0.35));
+        }
+
+        .hero-note {
+            color: var(--white-muted);
+            margin-top: 14px;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-pills {
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-top: 20px;
             flex-wrap: wrap;
+            margin-top: 24px;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-pill {
-            background: linear-gradient(145deg, #00e5ff, #ec4899);
-            padding: 8px 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 14px;
+            border-radius: 999px;
+            background: linear-gradient(145deg, rgba(0,229,255,0.14), rgba(236,72,153,0.12));
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.82);
+            font-size: 0.92rem;
+            font-weight: 700;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .hero-pill:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0,229,255,0.18);
+        }
+
+        .redes-sociais {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .redes-sociais h3 {
+            color: rgba(255,255,255,0.72);
+            margin-bottom: 16px;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            font-size: 1.4rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(8px);
+        }
+
+        .social-icon:hover {
+            transform: translateY(-6px) rotate(-3deg) scale(1.08);
+            background: linear-gradient(145deg, var(--cyan), var(--green), var(--purple), var(--pink));
+            box-shadow: 0 18px 34px rgba(0,229,255,0.35);
+            border-color: transparent;
+        }
+
+        .saudacao,
+        .trimestre {
+            background:
+                linear-gradient(145deg, rgba(255,255,255,0.14), rgba(255,255,255,0.055)),
+                linear-gradient(120deg, rgba(0,229,255,0.08), rgba(236,72,153,0.07), rgba(250,204,21,0.045));
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.12);
+            border: 1px solid var(--border);
+        }
+
+        .saudacao {
+            padding: 30px 35px;
+            margin-bottom: 32px;
+            animation: fadeSlideUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .saudacao h2 {
+            color: var(--cyan);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.8rem;
+        }
+
+        .saudacao p { margin-bottom: 14px; color: var(--white-soft); }
+        .saudacao ul { margin-left: 20px; margin-bottom: 20px; color: rgba(255,255,255,0.74); }
+        .saudacao ul li { margin-bottom: 6px; }
+
+        .saudacao .destaque {
+            background: linear-gradient(145deg, rgba(0,229,255,0.15), rgba(34,197,94,0.10), rgba(236,72,153,0.12));
+            padding: 20px;
+            border-radius: 22px;
+            border-left: 6px solid var(--cyan);
+            margin-top: 20px;
+        }
+
+        .trimestre {
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: box-shadow 0.4s ease, transform 0.3s ease;
+        }
+
+        .trimestre:hover {
+            box-shadow: 0 30px 66px rgba(0,229,255,0.16), inset 0 1px 0 rgba(255,255,255,0.16);
+            transform: translateY(-2px);
+        }
+
+        .trimestre-header {
+            background: rgba(255,255,255,0.055);
+            padding: 22px 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.3s ease;
+        }
+
+        .trimestre-header:hover { background: rgba(255,255,255,0.095); }
+
+        .trimestre-header h2 {
+            color: #fff;
+            font-size: 1.6rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin: 0;
+            letter-spacing: -0.02em;
+        }
+
+        .trimestre-header .badge {
+            background: linear-gradient(145deg, var(--cyan), var(--green), var(--purple), var(--pink));
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            box-shadow: 0 8px 18px rgba(0,229,255,0.28);
+        }
+
+        .toggle-icon {
+            font-size: 1.2rem;
+            color: var(--cyan);
+            transition: transform 0.4s ease, background 0.3s ease;
+            background: rgba(0,229,255,0.11);
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid rgba(0,229,255,0.22);
+            flex-shrink: 0;
+        }
+
+        .trimestre-header.open .toggle-icon {
+            transform: rotate(180deg);
+            background: linear-gradient(145deg, var(--cyan), var(--green), var(--purple), var(--pink));
+            color: #fff;
+            box-shadow: 0 8px 20px rgba(0,229,255,0.34);
+        }
+
+        .trimestre-conteudo {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease;
+            padding: 0 30px;
+            background: rgba(0,0,0,0.1);
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .trimestre-conteudo.open {
+            padding: 0 30px 30px 30px;
+        }
+
+        .tema-trimestre {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.05rem;
+            margin: 24px 0 20px;
+            padding: 14px 20px;
+            background: linear-gradient(90deg, rgba(0,229,255,0.15), rgba(250,204,21,0.10), rgba(236,72,153,0.12));
+            border-radius: 40px;
+            border-left: 6px solid var(--cyan);
+            font-weight: 700;
+        }
+
+        .capa-revista { text-align: center; margin: 20px 0 30px; }
+        .capa-revista img {
+            width: 100%;
+            max-width: 1200px;
+            height: auto;
+            border-radius: 22px;
+            box-shadow: 0 24px 50px rgba(0,0,0,0.5);
+            border: 2px solid rgba(255,255,255,0.15);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .capa-revista img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 34px 70px rgba(139,92,246,0.28);
+        }
+
+        .descricao-detalhada,
+        .video-trimestre {
+            background: rgba(255,255,255,0.07);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            border: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.86);
+        }
+
+        .descricao-detalhada {
+            padding: 28px;
+            margin: 20px 0 30px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .video-trimestre {
+            border-radius: 28px;
+            padding: 28px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .video-trimestre h3 {
+            color: var(--cyan);
+            font-size: 1.3rem;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 800;
+        }
+
+        .video-universal-container {
+            width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+            background: #000;
+            border: 1px solid rgba(0,229,255,0.35);
+        }
+
+        .video-responsive-wrapper {
+            position: relative;
+            padding-bottom: 177.78%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-responsive-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            text-align: center;
+            color: rgba(255,255,255,0.6);
+            font-size: 1rem;
+            margin: 20px auto 0;
+        }
+
+        .video-direct-link {
+            display: inline-block;
+            background: linear-gradient(145deg, var(--pink), var(--orange), var(--purple));
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 800;
+            margin-top: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(236,72,153,0.3);
+        }
+
+        .video-direct-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 30px rgba(236,72,153,0.45);
+        }
+
+        .licoes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .licao-card {
+            background:
+                linear-gradient(145deg, rgba(255,255,255,0.16), rgba(255,255,255,0.055)),
+                linear-gradient(135deg, rgba(0,229,255,0.08), rgba(250,204,21,0.05), rgba(236,72,153,0.08));
+            border-radius: 26px;
+            padding: 24px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.13);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .licao-card::before {
+            content: "";
+            position: absolute;
+            width: 180%;
+            height: 180%;
+            background: radial-gradient(circle, rgba(0,229,255,0.13) 0%, transparent 65%);
+            top: -40%;
+            left: -40%;
+            transition: 0.6s ease;
+            pointer-events: none;
+        }
+
+        .licao-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 26px 54px rgba(0,229,255,0.25);
+            border-color: rgba(0,229,255,0.4);
+        }
+
+        .licao-card:hover::before {
+            top: -20%;
+            left: -20%;
+        }
+
+        .licao-card.blocked-card {
+            border-color: rgba(239,68,68,0.35);
+            background: linear-gradient(145deg, rgba(239,68,68,0.13), rgba(255,255,255,0.035));
+        }
+
+        .licao-card .numero {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: linear-gradient(145deg, rgba(0,229,255,0.24), rgba(139,92,246,0.22));
+            color: #e0fbff;
+            width: 46px;
+            height: 46px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            border: 1px solid rgba(0,229,255,0.28);
+            z-index: 1;
+        }
+
+        .licao-card h3 {
+            color: #fff;
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            padding-right: 54px;
+            flex-grow: 1;
+            line-height: 1.5;
+            position: relative;
+            z-index: 1;
+        }
+
+        .licao-card .data {
+            color: rgba(255,255,255,0.58);
+            font-size: 0.88rem;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .release-date {
+            color: #a5f3fc;
+            font-size: 0.8rem;
+            background: rgba(0,229,255,0.1);
+            padding: 2px 8px;
             border-radius: 20px;
-            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .blocked-note {
+            color: #fecaca;
+            font-size: 0.8rem;
+            background: rgba(239,68,68,0.13);
+            border: 1px solid rgba(239,68,68,0.25);
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-left: 8px;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            margin-bottom: 16px;
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--cyan), var(--green), var(--yellow), var(--pink), var(--purple));
+            border-radius: 10px;
+            transition: width 0.8s ease;
+        }
+
+        .progress.blocked-progress {
+            background: linear-gradient(90deg, var(--red), #f97316);
         }
 
         .btn-quiz {
-            display: block;
-            text-align: center;
-            padding: 10px;
-            border-radius: 20px;
-            background: linear-gradient(145deg, #00e5ff, #2563eb);
-            margin-top: 10px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: linear-gradient(145deg, var(--cyan), var(--green), var(--blue));
+            color: #fff;
             text-decoration: none;
-            color: white;
+            padding: 13px 24px;
+            border-radius: 40px;
+            font-weight: 800;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            font-size: 0.95rem;
+            margin-top: auto;
+            box-shadow: 0 8px 20px rgba(0,229,255,0.28);
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-quiz:hover {
+            background: linear-gradient(145deg, var(--pink), var(--orange), var(--purple));
+            transform: translateY(-2px);
+            box-shadow: 0 16px 30px rgba(236,72,153,0.35);
         }
 
         .btn-quiz.disabled {
-            background: #555;
+            background: rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.35);
+            box-shadow: none;
+            cursor: not-allowed;
             pointer-events: none;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .btn-quiz.blocked {
+            background: rgba(239,68,68,0.12);
+            color: #fecaca;
+            box-shadow: none;
+            cursor: not-allowed;
+            pointer-events: none;
+            border: 1px solid rgba(239,68,68,0.26);
+        }
+
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 800;
+        }
+
+        .status.ativa {
+            background: rgba(34,197,94,0.16);
+            color: #86efac;
+            border: 1px solid rgba(134,239,172,0.28);
+        }
+
+        .status.breve {
+            background: rgba(0,229,255,0.13);
+            color: #a5f3fc;
+            border: 1px solid rgba(0,229,255,0.24);
+        }
+
+        .status.bloqueada {
+            background: rgba(239,68,68,0.16);
+            color: #fecaca;
+            border: 1px solid rgba(239,68,68,0.28);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: rgba(255,255,255,0.45);
+            margin-top: 40px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 14px; }
+            .logo-img { max-width: 110px; }
+            header { padding: 2.3rem 1.25rem; border-radius: 28px; }
+            .classe-img-wrap img { max-width: 220px; }
+            .saudacao { padding: 24px 20px; }
+            .saudacao h2 { font-size: 1.45rem; align-items: flex-start; }
+            .trimestre-header { padding: 18px 22px; }
+            .trimestre-header h2 { font-size: 1.3rem; gap: 10px; }
+            .trimestre-conteudo.open { padding: 0 18px 22px; }
+            .descricao-detalhada { padding: 20px; }
+            .capa-revista img { max-width: 100%; }
+            .licoes-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
-
 <body>
+    <canvas id="particles"></canvas>
 
-<div class="container">
+    <div class="container">
+        <header>
+            <img src="https://i.imgur.com/vsNu5IC.png" alt="Logo EBD" class="logo-img" id="logoImg">
+            <div class="eyebrow"><i class="fas fa-bolt"></i> Jovens conectados na Palavra</div>
+            <h1><span class="gradient-text">Quizzes da EBD Fiel</span></h1>
+            <div class="classe-img-wrap">
+                <img src="https://i.imgur.com/SAWFwQE.png" alt="Classe Jovens">
+            </div>
+            <p class="hero-note">Teste seu conhecimento, revise as lições e avance no estudo bíblico com mais leveza.</p>
 
-<header>
-    <img src="https://i.imgur.com/vsNu5IC.png" class="logo-img" id="logoImg">
+            <div class="hero-pills">
+                <span class="hero-pill">⚡ Novos quizzes toda semana</span>
+                <span class="hero-pill">🎯 Desafie seu conhecimento</span>
+                <span class="hero-pill">🧠 Aprenda de forma interativa</span>
+            </div>
 
-    <img src="https://i.imgur.com/SAWFwQE.png" style="max-width:260px; margin:20px auto; display:block;">
+            <div class="redes-sociais">
+                <h3>Siga a EBD Fiel nas redes sociais:</h3>
+                <div class="social-icons">
+                    <a href="https://www.instagram.com/ebdfiel/" class="social-icon" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/EBDFiel/" class="social-icon" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.youtube.com/@EBDFiel" class="social-icon" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@ebdfiel" class="social-icon" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+        </header>
 
-    <div class="hero-pills">
-        <span class="hero-pill">⚡ Novos quizzes toda semana</span>
-        <span class="hero-pill">🎯 Desafie seu conhecimento</span>
-        <span class="hero-pill">🧠 Aprenda de forma interativa</span>
+        <div class="saudacao">
+            <h2>📚 Bem-vindo à Página de Quizzes - Jovens</h2>
+            <p>Esta página foi criada para ajudar no estudo e fixação das lições da EBD Betel, com foco especial na classe de Jovens.</p>
+            <p><strong>Objetivo dos Quizzes:</strong></p>
+            <ul>
+                <li><strong>Reforçar o aprendizado:</strong> testar o conhecimento adquirido em cada lição</li>
+                <li><strong>Preparar para as aulas:</strong> revisar os principais conceitos antes da aula dominical</li>
+                <li><strong>Avaliar o entendimento:</strong> identificar pontos que precisam de mais atenção</li>
+                <li><strong>Tornar o estudo interativo:</strong> transformar o estudo bíblico em uma experiência dinâmica</li>
+                <li><strong>Facilitar o ensino:</strong> professores podem usar os quizzes para preparar suas aulas</li>
+            </ul>
+            <div class="destaque">
+                <p><strong>📝 Como usar esta plataforma:</strong></p>
+                <p>1. Clique no trimestre desejado para expandir as lições.</p>
+                <p>2. Escolha a lição e clique em "Iniciar Quiz".</p>
+                <p>3. Responda as questões e revise seus erros.</p>
+                <p><strong>⚠️ Liberação de lições:</strong> As lições serão liberadas automaticamente às sextas-feiras que antecedem o domingo de cada aula. Clique 5 vezes no logo para abrir o painel de administração e liberar, bloquear ou resetar uma lição.</p>
+            </div>
+            <p style="margin-top:14px;">Que Deus abençoe seu estudo!</p>
+        </div>
+
+        <main>
+            <div id="trimestres-container"></div>
+        </main>
+
+        <footer>
+            <p>© 2026 - EBD Fiel - Classe Jovens</p>
+            <p style="font-size: 0.9rem; opacity: 0.5; margin-top: 4px;">Fiel à Palavra</p>
+        </footer>
     </div>
-</header>
 
-<main id="trimestres-container"></main>
+    <script>
+        const trimestres = [
+            {
+                numero: 1,
+                titulo: "1º Trimestre 2026",
+                badge: "Jan-Mar",
+                tema: "As Bem-Aventuranças do Reino de Deus",
+                capa: "https://i.imgur.com/wlofmVE.png",
+                descricao: `<p>Para iniciar o primeiro trimestre do ano com as muitas bênçãos da vida cristã, a Revista Conectar + Jovens traz como tema o mais notório discurso de Jesus: o Sermão da Montanha, registrado em Mateus 5.5-7.</p>
+                            <p>As beatitudes, ou bem-aventuranças, proferidas pelo Mestre do alto de um monte para os Seus discípulos e a multidão que O seguia, nos ensinam que a felicidade do cristão não está nos padrões estabelecidos por este mundo, mas nos padrões que regem o Reino de Deus.</p>
+                            <p>Que o seu ministério seja repleto das beatitudes do Reino!</p>`,
+                videoId: "bFRykKpUv2c",
+                videoTitle: "As Bem-Aventuranças",
+                lessons: [
+                    { num: 1, title: "As Beatitudes do Reino de Deus", date: "04/01/2026", releaseDate: new Date(2026, 0, 2) },
+                    { num: 2, title: "Bem-Aventurados em Cristo", date: "11/01/2026", releaseDate: new Date(2026, 0, 9) },
+                    { num: 3, title: "Bem-Aventurados os pobres de espírito", date: "18/01/2026", releaseDate: new Date(2026, 0, 16) },
+                    { num: 4, title: "Bem-Aventurados os que choram por seus pecados", date: "25/01/2026", releaseDate: new Date(2026, 0, 23) },
+                    { num: 5, title: "Bem-Aventurados os mansos", date: "01/02/2026", releaseDate: new Date(2026, 1, 30) },
+                    { num: 6, title: "Bem-Aventurados os que têm fome e sede de justiça", date: "08/02/2026", releaseDate: new Date(2026, 1, 6) },
+                    { num: 7, title: "Bem-Aventurados os misericordiosos", date: "15/02/2026", releaseDate: new Date(2026, 1, 13) },
+                    { num: 8, title: "Bem-Aventurados os limpos de coração", date: "22/02/2026", releaseDate: new Date(2026, 1, 20) },
+                    { num: 9, title: "Bem-Aventurados os pacificadores", date: "01/03/2026", releaseDate: new Date(2026, 2, 27) },
+                    { num: 10, title: "Bem-Aventurados os perseguidos por causa da justiça", date: "08/03/2026", releaseDate: new Date(2026, 2, 6) },
+                    { num: 11, title: "O sal da terra e a luz do mundo", date: "15/03/2026", releaseDate: new Date(2026, 2, 13) },
+                    { num: 12, title: "Esmola, oração e jejum são práticas espirituais", date: "22/03/2026", releaseDate: new Date(2026, 2, 20) },
+                    { num: 13, title: "Não andeis ansiosos", date: "29/03/2026", releaseDate: new Date(2026, 2, 27) }
+                ]
+            },
+            {
+                numero: 2,
+                titulo: "2º Trimestre 2026",
+                badge: "Abr-Jun",
+                tema: "Mordomia Cristã: vivendo para a Glória de Deus",
+                capa: "https://i.imgur.com/rnntuWl.png",
+                descricao: `<p>Neste trimestre, a Revista Conectar + Jovens traz um tema importante para os que são chamados a viver o Evangelho com obediência e responsabilidade: Mordomia Cristã: vivendo para a Glória de Deus.</p>
+                            <p>Para uma abordagem eficaz, selecionamos duas características principais dos despenseiros fiéis de Cristo: obediência a Deus e à Sua Palavra; responsabilidade com Ele acima de tudo, conosco e com o próximo.</p>
+                            <p><strong>Observação:</strong> As lições serão liberadas automaticamente às sextas-feiras que antecedem o domingo de cada aula. O painel de administração permite liberar ou bloquear lições manualmente.</p>`,
+                videoId: "uCCysCorUok",
+                videoTitle: "Mordomia Cristã",
+                lessons: [
+                    { num: 1, title: "O chamado que transforma a dor em propósito", date: "05/04/2026", releaseDate: new Date(2026, 3, 3) },
+                    { num: 2, title: "Preparando-se para o agir de Deus", date: "12/04/2026", releaseDate: new Date(2026, 3, 10) },
+                    { num: 3, title: "Lidando com vozes contrárias", date: "19/04/2026", releaseDate: new Date(2026, 3, 17) },
+                    { num: 4, title: "O poder das palavras: pedras que edificam e não ferem", date: "26/04/2026", releaseDate: new Date(2026, 3, 24) },
+                    { num: 5, title: "Fortalecido pela fé para combater o medo com coragem", date: "03/05/2026", releaseDate: new Date(2026, 4, 1) },
+                    { num: 6, title: "Discernimento espiritual: a sabedoria divina em tempos de engano", date: "10/05/2026", releaseDate: new Date(2026, 4, 8) },
+                    { num: 7, title: "Unidade: a receita que nos faz vencer as adversidades da vida", date: "17/05/2026", releaseDate: new Date(2026, 4, 15) },
+                    { num: 8, title: "A fidelidade e o temor: características que geram confiança", date: "24/05/2026", releaseDate: new Date(2026, 4, 22) },
+                    { num: 9, title: "Alegria e gratidão ao Senhor resultam da Palavra de Deus", date: "31/05/2026", releaseDate: new Date(2026, 4, 29) },
+                    { num: 10, title: "O arrependimento: aspecto indispensável para uma nova vida", date: "07/06/2026", releaseDate: new Date(2026, 5, 5) },
+                    { num: 11, title: "O culto: a importância para uma vida cristã edificada", date: "14/06/2026", releaseDate: new Date(2026, 5, 12) },
+                    { num: 12, title: "Vigilância e oração: o perigo das alianças erradas", date: "21/06/2026", releaseDate: new Date(2026, 5, 19) },
+                    { num: 13, title: "Os elementos fundamentais da vitória de Neemias", date: "28/06/2026", releaseDate: new Date(2026, 5, 26) }
+                ]
+            },
+            {
+                numero: 3,
+                titulo: "3º Trimestre 2026",
+                badge: "Jul-Set",
+                tema: "Livros Poéticos: Teologia Sapiencial da Poesia Hebraica",
+                capa: "https://i.imgur.com/placeholder.png",
+                descricao: `<p>Neste trimestre, mergulharemos na rica literatura poética do Antigo Testamento: Jó, Salmos, Provérbios, Eclesiastes e Cantares de Salomão. A teologia sapiencial nos ensina sobre a sabedoria divina, o temor do Senhor e a arte de viver uma vida que agrada a Deus.</p>
+                            <p>Estudaremos como a poesia hebraica expressa os sentimentos mais profundos da alma, desde o lamento até a adoração, e como esses livros continuam a falar aos jovens de hoje.</p>`,
+                videoId: "bFRykKpUv2c",
+                videoTitle: "Sabedoria Hebraica",
+                lessons: [
+                    { num: 1, title: "Introdução aos Livros Poéticos", date: "05/07/2026", releaseDate: new Date(2026, 6, 3) },
+                    { num: 2, title: "A Sabedoria nos Salmos", date: "12/07/2026", releaseDate: new Date(2026, 6, 10) },
+                    { num: 3, title: "Provérbios: O Caminho da Sabedoria", date: "19/07/2026", releaseDate: new Date(2026, 6, 17) },
+                    { num: 4, title: "Eclesiastes: O Sentido da Vida", date: "26/07/2026", releaseDate: new Date(2026, 6, 24) },
+                    { num: 5, title: "Cantares: O Amor que Une", date: "02/08/2026", releaseDate: new Date(2026, 7, 31) },
+                    { num: 6, title: "Jó: Sofrimento e Soberania Divina", date: "09/08/2026", releaseDate: new Date(2026, 7, 7) },
+                    { num: 7, title: "Salmos de Lamento e Confiança", date: "16/08/2026", releaseDate: new Date(2026, 7, 14) },
+                    { num: 8, title: "Salmos de Ação de Graças", date: "23/08/2026", releaseDate: new Date(2026, 7, 21) },
+                    { num: 9, title: "Provérbios para Jovens", date: "30/08/2026", releaseDate: new Date(2026, 7, 28) },
+                    { num: 10, title: "A Futilidade sem Deus (Eclesiastes)", date: "06/09/2026", releaseDate: new Date(2026, 8, 4) },
+                    { num: 11, title: "O Temor do Senhor: Princípio da Sabedoria", date: "13/09/2026", releaseDate: new Date(2026, 8, 11) },
+                    { num: 12, title: "Poesia Hebraica e Adoração", date: "20/09/2026", releaseDate: new Date(2026, 8, 18) },
+                    { num: 13, title: "A Sabedoria que Vem do Alto", date: "27/09/2026", releaseDate: new Date(2026, 8, 25) }
+                ]
+            },
+            {
+                numero: 4,
+                titulo: "4º Trimestre 2026",
+                badge: "Out-Dez",
+                tema: "A tecnologia e a Bíblia: Aliadas ou rivais?",
+                capa: "https://i.imgur.com/placeholder.png",
+                descricao: `<p>Em um mundo cada vez mais conectado, a tecnologia se tornou parte indispensável da vida dos jovens. Neste trimestre, refletiremos sobre como a revolução digital impacta a fé, a ética e os relacionamentos.</p>
+                            <p>Analisaremos as oportunidades que a tecnologia oferece para o avanço do evangelho, os cuidados com o uso excessivo e a influência de valores contrários ao Reino.</p>`,
+                videoId: "bFRykKpUv2c",
+                videoTitle: "Fé na Era Digital",
+                lessons: [
+                    { num: 1, title: "Tecnologia: Dom ou Armadilha?", date: "04/10/2026", releaseDate: new Date(2026, 9, 2) },
+                    { num: 2, title: "A Bíblia e a Era Digital", date: "11/10/2026", releaseDate: new Date(2026, 9, 9) },
+                    { num: 3, title: "Redes Sociais: Comunhão ou Isolamento?", date: "18/10/2026", releaseDate: new Date(2026, 9, 16) },
+                    { num: 4, title: "Identidade Cristã no Mundo Virtual", date: "25/10/2026", releaseDate: new Date(2026, 9, 23) },
+                    { num: 5, title: "Evangelismo e Discipulado Online", date: "01/11/2026", releaseDate: new Date(2026, 10, 30) },
+                    { num: 6, title: "Vício Digital: Liberdade em Cristo", date: "08/11/2026", releaseDate: new Date(2026, 10, 6) },
+                    { num: 7, title: "Fake News e Ética Cristã", date: "15/11/2026", releaseDate: new Date(2026, 10, 13) },
+                    { num: 8, title: "Proteção de Dados e Privacidade", date: "22/11/2026", releaseDate: new Date(2026, 10, 20) },
+                    { num: 9, title: "Tecnologia no Culto: Ajuda ou Distração?", date: "29/11/2026", releaseDate: new Date(2026, 10, 27) },
+                    { num: 10, title: "Inteligência Artificial e Fé", date: "06/12/2026", releaseDate: new Date(2026, 11, 4) },
+                    { num: 11, title: "Jogos Eletrônicos: Limites e Consciência", date: "13/12/2026", releaseDate: new Date(2026, 11, 11) },
+                    { num: 12, title: "Testemunho Cristão nas Plataformas", date: "20/12/2026", releaseDate: new Date(2026, 11, 18) },
+                    { num: 13, title: "Vivendo o Reino na Era Digital", date: "27/12/2026", releaseDate: new Date(2026, 11, 25) }
+                ]
+            }
+        ];
 
-</div>
+        function formatDate(date) {
+            const day = date.getDate().toString().padStart(2, '0');
+            const month = (date.getMonth() + 1).toString().padStart(2, '0');
+            const year = date.getFullYear();
+            return `${day}/${month}/${year}`;
+        }
 
-<script>
+        function getLessonKeys(trimestreNum, lessonNum) {
+            return {
+                forceKey: `force_trimestre${trimestreNum}_lesson${lessonNum}`,
+                blockKey: `block_trimestre${trimestreNum}_lesson${lessonNum}`
+            };
+        }
 
-const trimestres = [
-    {
-        numero: 2,
-        titulo: "2º Trimestre 2026",
-        videoId: "uCCysCorUok",
-        lessons: [
-            { num: 1, title: "Lição exemplo", date: "05/04/2026", releaseDate: new Date(2026,3,3) }
-        ]
-    }
-];
+        function getLessonStatus(trimestreNum, lessonNum, releaseDate) {
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
 
-function getKeys(t,l){
-    return {
-        force:`force_${t}_${l}`,
-        block:`block_${t}_${l}`
-    }
-}
+            const { forceKey, blockKey } = getLessonKeys(trimestreNum, lessonNum);
+            const forced = localStorage.getItem(forceKey) === 'true';
+            const blocked = localStorage.getItem(blockKey) === 'true';
 
-function isAvailable(t,l,date){
-    const today = new Date();
-    today.setHours(0,0,0,0);
+            if (blocked) {
+                return {
+                    available: false,
+                    blocked: true,
+                    forced: false,
+                    statusText: 'Bloqueada',
+                    buttonText: '<i class="fas fa-lock"></i> Bloqueado',
+                    statusClass: 'bloqueada'
+                };
+            }
 
-    const k = getKeys(t,l);
+            if (forced) {
+                return {
+                    available: true,
+                    blocked: false,
+                    forced: true,
+                    statusText: 'Liberada',
+                    buttonText: '<i class="fas fa-play-circle"></i> Iniciar Quiz',
+                    statusClass: 'ativa'
+                };
+            }
 
-    if(localStorage.getItem(k.block)==='true') return false;
-    if(localStorage.getItem(k.force)==='true') return true;
+            const automaticallyAvailable = today >= releaseDate;
 
-    return today >= date;
-}
+            return {
+                available: automaticallyAvailable,
+                blocked: false,
+                forced: false,
+                statusText: automaticallyAvailable ? 'Disponível' : 'Em preparação',
+                buttonText: automaticallyAvailable ? '<i class="fas fa-play-circle"></i> Iniciar Quiz' : '<i class="fas fa-clock"></i> Em preparação',
+                statusClass: automaticallyAvailable ? 'ativa' : 'breve'
+            };
+        }
 
-function render(){
-    const c = document.getElementById('trimestres-container');
-    c.innerHTML='';
+        function refreshOpenAccordionsHeight() {
+            document.querySelectorAll('.trimestre-conteudo.open').forEach(conteudo => {
+                conteudo.style.maxHeight = conteudo.scrollHeight + 'px';
+            });
+        }
 
-    trimestres.forEach(t=>{
-        const div=document.createElement('div');
-        div.innerHTML=`<h2>${t.titulo}</h2>`;
+        function gerarTrimestres() {
+            const container = document.getElementById('trimestres-container');
+            container.innerHTML = '';
 
-        t.lessons.forEach(l=>{
-            const available=isAvailable(t.numero,l.num,l.releaseDate);
+            trimestres.forEach(trim => {
+                const trimestreDiv = document.createElement('div');
+                trimestreDiv.className = 'trimestre';
 
-            const el=document.createElement('div');
-            el.innerHTML=`
-                <p>${l.title}</p>
-                <a class="btn-quiz ${!available?'disabled':''}" href="#">
-                    ${available?'Iniciar Quiz':'Em preparação'}
-                </a>
-            `;
-            div.appendChild(el);
+                const headerDiv = document.createElement('div');
+                headerDiv.className = 'trimestre-header';
+                headerDiv.innerHTML = `
+                    <h2><span>${trim.titulo}</span><span class="badge">${trim.badge}</span></h2>
+                    <span class="toggle-icon"><i class="fas fa-chevron-down"></i></span>
+                `;
+
+                const conteudoDiv = document.createElement('div');
+                conteudoDiv.className = 'trimestre-conteudo';
+                conteudoDiv.innerHTML = `
+                    <div class="tema-trimestre"><strong>Tema:</strong> ${trim.tema}</div>
+                    <div class="capa-revista"><img src="${trim.capa}" alt="Capa ${trim.titulo}"></div>
+                    <div class="descricao-detalhada">${trim.descricao}</div>
+                    <div class="video-trimestre">
+                        <h3><i class="fas fa-video"></i> Vídeo Introdução - ${trim.videoTitle}</h3>
+                        <div class="video-universal-container">
+                            <div class="video-responsive-wrapper">
+                                <iframe src="https://www.youtube.com/embed/${trim.videoId}?rel=0&modestbranding=1&playsinline=1" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        <div class="video-info">
+                            <a href="https://www.youtube.com/watch?v=${trim.videoId}" target="_blank" class="video-direct-link"><i class="fab fa-youtube"></i> Assistir no YouTube</a>
+                        </div>
+                    </div>
+                    <div class="licoes-grid"></div>
+                `;
+
+                trimestreDiv.appendChild(headerDiv);
+                trimestreDiv.appendChild(conteudoDiv);
+                container.appendChild(trimestreDiv);
+
+                const gridContainer = conteudoDiv.querySelector('.licoes-grid');
+                trim.lessons.forEach(lesson => {
+                    const status = getLessonStatus(trim.numero, lesson.num, lesson.releaseDate);
+                    const releaseDateStr = formatDate(lesson.releaseDate);
+                    const link = `trimestre-${trim.numero.toString().padStart(2, '0')}/licao-${lesson.num.toString().padStart(2, '0')}/index.html`;
+                    const card = document.createElement('div');
+                    card.className = `licao-card ${status.blocked ? 'blocked-card' : ''}`;
+
+                    const releaseInfo = !status.available && !status.blocked
+                        ? `<span class="release-date">📆 Disponível a partir de ${releaseDateStr}</span>`
+                        : '';
+
+                    const blockedInfo = status.blocked
+                        ? `<span class="blocked-note">🔒 Bloqueio manual ativo</span>`
+                        : '';
+
+                    const forcedInfo = status.forced
+                        ? `<span class="release-date">⚡ Liberação manual</span>`
+                        : '';
+
+                    const buttonClass = status.blocked ? 'blocked' : (!status.available ? 'disabled' : '');
+
+                    card.innerHTML = `
+                        <div class="numero">${lesson.num.toString().padStart(2, '0')}</div>
+                        <h3>${lesson.title}</h3>
+                        <div class="data">
+                            <span>📅</span> ${lesson.date}
+                            <span class="status ${status.statusClass}">${status.statusText}</span>
+                            ${releaseInfo}
+                            ${blockedInfo}
+                            ${forcedInfo}
+                        </div>
+                        <div class="progress-bar"><div class="progress ${status.blocked ? 'blocked-progress' : ''}" style="width:${status.available ? '100%' : (status.blocked ? '100%' : '0%')}"></div></div>
+                        <a href="${status.available ? link : '#'}" class="btn-quiz ${buttonClass}" target="_blank">
+                            ${status.buttonText}
+                        </a>
+                    `;
+                    gridContainer.appendChild(card);
+                });
+            });
+        }
+
+        let logoClickCount = 0;
+        const logo = document.getElementById('logoImg');
+        const adminPanel = document.createElement('div');
+        adminPanel.id = 'admin-panel';
+        adminPanel.style.position = 'fixed';
+        adminPanel.style.bottom = '20px';
+        adminPanel.style.right = '20px';
+        adminPanel.style.background = 'linear-gradient(145deg, rgba(9,11,31,0.96), rgba(16,24,58,0.96))';
+        adminPanel.style.backdropFilter = 'blur(16px)';
+        adminPanel.style.padding = '16px';
+        adminPanel.style.borderRadius = '22px';
+        adminPanel.style.zIndex = '9999';
+        adminPanel.style.border = '1px solid rgba(0,229,255,0.45)';
+        adminPanel.style.boxShadow = '0 24px 60px rgba(0,0,0,0.55)';
+        adminPanel.style.display = 'none';
+        adminPanel.style.flexDirection = 'column';
+        adminPanel.style.gap = '10px';
+        adminPanel.style.minWidth = '280px';
+        adminPanel.innerHTML = `
+            <div style="display:flex; justify-content:space-between; align-items:center; gap:12px;">
+                <strong style="color:#00e5ff; font-size:0.98rem;"><i class="fas fa-user-shield"></i> Painel admin</strong>
+                <button id="close-admin" style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); color:white; cursor:pointer; width:32px; height:32px; border-radius:10px;">✕</button>
+            </div>
+            <small style="color:rgba(255,255,255,0.58); line-height:1.4;">Escolha uma lição para liberar, bloquear ou voltar ao modo automático.</small>
+            <select id="trimestre-select" style="padding:10px; border-radius:12px; background:#121a3f; color:white; border:1px solid rgba(255,255,255,0.14);">
+                <option value="1">1º Trimestre</option>
+                <option value="2">2º Trimestre</option>
+                <option value="3">3º Trimestre</option>
+                <option value="4">4º Trimestre</option>
+            </select>
+            <select id="lesson-select" style="padding:10px; border-radius:12px; background:#121a3f; color:white; border:1px solid rgba(255,255,255,0.14);">
+                <option value="1">Lição 01</option><option value="2">Lição 02</option><option value="3">Lição 03</option>
+                <option value="4">Lição 04</option><option value="5">Lição 05</option><option value="6">Lição 06</option>
+                <option value="7">Lição 07</option><option value="8">Lição 08</option><option value="9">Lição 09</option>
+                <option value="10">Lição 10</option><option value="11">Lição 11</option><option value="12">Lição 12</option>
+                <option value="13">Lição 13</option>
+            </select>
+            <button id="force-release" style="background:linear-gradient(145deg,#22c55e,#16a34a); color:#fff; border:none; padding:10px; border-radius:12px; cursor:pointer; font-weight:800;"><i class="fas fa-lock-open"></i> Liberar lição</button>
+            <button id="force-block" style="background:linear-gradient(145deg,#ef4444,#b91c1c); color:#fff; border:none; padding:10px; border-radius:12px; cursor:pointer; font-weight:800;"><i class="fas fa-lock"></i> Bloquear lição</button>
+            <button id="reset-selected" style="background:linear-gradient(145deg,#00e5ff,#2563eb); color:#fff; border:none; padding:10px; border-radius:12px; cursor:pointer; font-weight:800;"><i class="fas fa-rotate-left"></i> Voltar lição ao automático</button>
+            <button id="clear-all-forces" style="background:rgba(255,255,255,0.12); color:white; border:1px solid rgba(255,255,255,0.14); padding:10px; border-radius:12px; cursor:pointer; font-weight:700;">Limpar todas as alterações</button>
+        `;
+        document.body.appendChild(adminPanel);
+
+        if (logo) {
+            logo.addEventListener('click', () => {
+                logoClickCount++;
+                if (logoClickCount >= 5) {
+                    adminPanel.style.display = 'flex';
+                    logoClickCount = 0;
+                }
+                setTimeout(() => { logoClickCount = 0; }, 2000);
+            });
+        }
+
+        document.getElementById('close-admin')?.addEventListener('click', () => {
+            adminPanel.style.display = 'none';
         });
 
-        c.appendChild(div);
-    });
-}
+        document.getElementById('force-release')?.addEventListener('click', () => {
+            const trimestre = document.getElementById('trimestre-select').value;
+            const lesson = document.getElementById('lesson-select').value;
+            const { forceKey, blockKey } = getLessonKeys(trimestre, lesson);
+            localStorage.setItem(forceKey, 'true');
+            localStorage.removeItem(blockKey);
+            location.reload();
+        });
 
-render();
+        document.getElementById('force-block')?.addEventListener('click', () => {
+            const trimestre = document.getElementById('trimestre-select').value;
+            const lesson = document.getElementById('lesson-select').value;
+            const { forceKey, blockKey } = getLessonKeys(trimestre, lesson);
+            localStorage.setItem(blockKey, 'true');
+            localStorage.removeItem(forceKey);
+            location.reload();
+        });
 
-// ADMIN
-let clicks=0;
-document.getElementById('logoImg').onclick=()=>{
-    clicks++;
-    if(clicks>=5){
-        const t=prompt('Trimestre?');
-        const l=prompt('Lição?');
-        const acao=prompt('liberar / bloquear / reset');
+        document.getElementById('reset-selected')?.addEventListener('click', () => {
+            const trimestre = document.getElementById('trimestre-select').value;
+            const lesson = document.getElementById('lesson-select').value;
+            const { forceKey, blockKey } = getLessonKeys(trimestre, lesson);
+            localStorage.removeItem(forceKey);
+            localStorage.removeItem(blockKey);
+            location.reload();
+        });
 
-        const k=getKeys(t,l);
+        document.getElementById('clear-all-forces')?.addEventListener('click', () => {
+            const keysToRemove = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                if (key && (key.startsWith('force_trimestre') || key.startsWith('block_trimestre'))) {
+                    keysToRemove.push(key);
+                }
+            }
+            keysToRemove.forEach(key => localStorage.removeItem(key));
+            location.reload();
+        });
 
-        if(acao==='liberar'){
-            localStorage.setItem(k.force,'true');
-            localStorage.removeItem(k.block);
+        gerarTrimestres();
+
+        document.querySelectorAll('.trimestre-header').forEach(header => {
+            header.addEventListener('click', function () {
+                const conteudo = this.nextElementSibling;
+                const isOpen = conteudo.classList.contains('open');
+
+                document.querySelectorAll('.trimestre-conteudo').forEach(c => {
+                    c.style.maxHeight = null;
+                    c.classList.remove('open');
+                });
+                document.querySelectorAll('.trimestre-header').forEach(h => h.classList.remove('open'));
+
+                if (!isOpen) {
+                    conteudo.classList.add('open');
+                    conteudo.style.maxHeight = conteudo.scrollHeight + 'px';
+                    this.classList.add('open');
+                }
+            });
+        });
+
+        window.addEventListener('resize', refreshOpenAccordionsHeight);
+
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         }
 
-        if(acao==='bloquear'){
-            localStorage.setItem(k.block,'true');
-            localStorage.removeItem(k.force);
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const particles = Array.from({ length: 100 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: Math.random() * 2.1 + 0.4,
+            d: Math.random() * 0.65 + 0.2,
+            o: Math.random() * 0.45 + 0.1,
+            hue: Math.random() > 0.5 ? '0, 229, 255' : '236, 72, 153'
+        }));
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(${p.hue}, ${p.o})`;
+                ctx.fill();
+                p.y += p.d;
+                p.x += Math.sin(p.y / 80) * 0.18;
+
+                if (p.y > canvas.height) {
+                    p.y = 0;
+                    p.x = Math.random() * canvas.width;
+                }
+            });
+            requestAnimationFrame(drawParticles);
         }
 
-        if(acao==='reset'){
-            localStorage.removeItem(k.force);
-            localStorage.removeItem(k.block);
-        }
-
-        location.reload();
-    }
-    setTimeout(()=>clicks=0,2000);
-}
-
-</script>
-
+        drawParticles();
+    </script>
 </body>
 </html>

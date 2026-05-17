@@ -4,6 +4,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Quiz da EBD Jovem | Lição 7 - Cuidando do Espírito que nos Conecta</title>
+
+<!-- Miniatura para WhatsApp, Facebook e redes sociais -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Quiz da EBD Fiel Jovens">
+<meta property="og:description" content="Teste seus conhecimentos no Quiz da EBD Fiel Jovens. Fiel à Palavra!">
+<meta property="og:image" content="https://ebdfiel.github.io/Quizzes-ConectarJovens-/trimestre-02/licao-07/miniatura-quiz-ebd-jovens.png">
+<meta property="og:image:secure_url" content="https://ebdfiel.github.io/Quizzes-ConectarJovens-/trimestre-02/licao-07/miniatura-quiz-ebd-jovens.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
+<meta property="og:url" content="https://ebdfiel.github.io/Quizzes-ConectarJovens-/trimestre-02/licao-07/index.html">
+
+<!-- Miniatura para Twitter/X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Quiz da EBD Fiel Jovens">
+<meta name="twitter:description" content="Teste seus conhecimentos no Quiz da EBD Fiel Jovens. Fiel à Palavra!">
+<meta name="twitter:image" content="https://ebdfiel.github.io/Quizzes-ConectarJovens-/trimestre-02/licao-07/miniatura-quiz-ebd-jovens.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -637,6 +654,11 @@
     document.getElementById('prev-btn').addEventListener('click', showPreviousQuestion);
     document.getElementById('next-btn').addEventListener('click', showNextQuestion);
     document.getElementById('restart-btn').addEventListener('click', restartQuiz);
+
+    const shareInitialBtn = document.getElementById('share-initial-btn');
+    if (shareInitialBtn) {
+      shareInitialBtn.addEventListener('click', shareQuiz);
+    }
     userAnswers = new Array(allQuestions.length).fill(null);
     const logoImg = document.getElementById('logo-img');
     logoImg.onerror = function() {
@@ -841,6 +863,19 @@
     document.querySelector('.content-section').style.display = 'flex';
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  function shareQuiz() {
+    const text = `Quiz da EBD Fiel Jovens 🎯
+
+Teste seus conhecimentos na Palavra de Deus!
+
+Acesse aqui:
+${window.location.href}`;
+
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
+    window.open(whatsappUrl, '_blank');
+  }
+
 </script>
 </body>
 </html>
